@@ -1,0 +1,35 @@
+/**  =====================
+      Calendar css start
+==========================  **/
+
+.external-events {
+    .fc-event {
+        color: #fff;
+        cursor: move;
+        padding: 5px 18px;
+        margin-top: 5px;
+        background: $primary-color;
+        border-color: $primary-color;
+    }
+}
+
+.calendar {
+    a:not([href]):not([tabindex]) {
+        &,
+        &:focus,
+        &:hover {
+            color: #fff;
+        }
+    }
+
+    .fc-event,
+    .fc-event:hover {
+        color: #fff;
+        cursor: move;
+        padding: 5px 18px;
+        margin-top: 2px;
+        background: $primary-color;
+        border-color: $primary-color;
+    }
+}
+/**====== Calendar css end ======**/

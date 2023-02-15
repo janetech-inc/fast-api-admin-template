@@ -1,0 +1,64 @@
+/**======================================================================
+=========================================================================
+Template Name: Datta Able Admin Template
+Author: Codedthemes
+supports: https://codedthemes.support-hub.io/
+File: style.css
+=========================================================================
+=========================================================================
+  == Table of Contents==
+	- Generic classes
+		-	Margin, Padding, Font class, text align, position, floating, overflow, background class, text color, display class, boarder class
+	- Theme Elements
+		-	Accordion, Button, tabs, typography, buttons, box shadow, Lable & Badges, Alert, Pagination, Breadcumb, Cards, Collapse,
+        -   Carousel, Grid, Progress, Model, tooltip, popover, Datepicker, Gridstack, lightbox, notification, Nestable, pnotify, rating,
+        -   Rangeslider, Slider, Syntax Highlighter, Tour, Treeview, Toolbar, Session Timeout, Session idle Timeout, offline, Animation
+    - Forms
+        -   Forms Elements, Advance Form Control, Validation, Masking, Wizard, Picker, Select
+	- Pages
+		-   Chat, authentication, Maintenance, Maps, Landingpage messages, task, Todo, Notes, Charts, Icons, Gallery, Editors,
+        -   Invoice, Full Calender, File Upload,
+=================================================================================
+=================================================================================== */
+// General theme contents
+@import "partials/variables";
+@import "partials/general";
+@import "partials/generic";
+@import "partials/mixins/function";
+
+// important Element
+@import "partials/menu/menu-lite";
+@import "partials/widget/widget";
+
+// Theme Element
+@import "partials/theme-elements/form";
+@import "partials/theme-elements/radiobox-checkbox";
+@import "partials/theme-elements/labels-badges";
+@import "partials/theme-elements/data-tables";
+@import "partials/theme-elements/authentication";
+@import "partials/theme-elements/button";
+@import "partials/theme-elements/alert";
+@import "partials/theme-elements/breadcrumb-pagination";
+@import "partials/theme-elements/progress";
+@import "partials/theme-elements/tooltip";
+@import "partials/theme-elements/popover";
+@import "partials/theme-elements/nav";
+@import "partials/theme-elements/modal";
+
+// Other
+@import "partials/other/chat";
+@import "partials/other/prism";
+@import "partials/other/toolbar";
+@import "partials/other/notification";
+@import "partials/other/nestable";
+@import "partials/other/pnotify";
+@import "partials/other/rangeslider";
+@import "partials/other/switches";
+@import "partials/other/wizard";
+@import "partials/other/chart";
+@import "partials/other/icon-lauouts";
+@import "partials/other/calendar";
+@import "partials/other/file-upload";
+@import "partials/other/sweatalert";
+@import "partials/other/other";
+@import "partials/other/user";

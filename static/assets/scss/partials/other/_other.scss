@@ -1,0 +1,555 @@
+/**  =====================
+      other css start
+==========================  **/
+.validate-me {
+    .error {
+        border-color: $danger;
+    }
+}
+
+.error-message {
+    color: $danger;
+}
+
+.latest-update-card .card-body {
+    padding-top: 0;
+}
+
+.latest-update-card .card-body .latest-update-box {
+    position: relative;
+}
+
+.latest-update-card .card-body .latest-update-box:after {
+    content: "";
+    position: absolute;
+    background: #ebebeb;
+    height: 100%;
+    width: 3px;
+    top: 0;
+    left: 11px;
+    z-index: 1;
+}
+
+.latest-update-card .card-body .latest-update-box .update-meta {
+    z-index: 2;
+}
+
+.latest-update-card .card-body .latest-update-box .update-meta .update-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    padding: 7px 8px;
+    font-size: 16px;
+    color: #fff;
+}
+
+.latest-update-card .card-body .latest-update-box .update-meta .update-icon.ring {
+    border-width: 3px solid #602bb6;
+    width: 15px;
+    height: 15px;
+    padding: 0;
+    display: block;
+    background: #fff;
+}
+
+.latest-update-card .card-body .latest-update-box .update-meta i.update-icon {
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.latest-update-card .card-body .latest-update-box .update-meta img.update-icon {
+    padding: 0;
+    width: 40px;
+    height: 40px;
+}
+
+.latest-update-card.update-card .card-body .latest-update-box:after {
+    left: 19px;
+}
+
+/**  =====================
+Help Desk Application css start
+==========================  **/
+.hd-body .excerpt {
+    padding: 15px;
+    background: #eff3f6;
+    border: 1px solid #e2e5e8;
+}
+
+.hd-body .ticket-customer,
+.hd-body .ticket-type-icon {
+    display: block;
+    text-transform: capitalize;
+}
+
+.hd-body:hover .hover-blk {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+.sm-view .card-body .excerpt,
+.sm-view .card-body ul.list-inline {
+    display: none;
+}
+
+.md-view .excerpt {
+    display: none;
+}
+
+.md-view .col-auto ul li:nth-child(1),
+.md-view .col-auto ul li:nth-child(3),
+.sm-view .col-auto ul li:nth-child(1),
+.sm-view .col-auto ul li:nth-child(3) {
+    display: none;
+}
+
+.hover-blk {
+    background: #fff;
+    width: 270px;
+    left: calc(100% + 10px);
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    z-index: 5;
+    transition: all 0.1s ease-out;
+}
+
+.hover-blk .img-txt p {
+    display: inline-block;
+}
+
+.topic-name h1 {
+    float: left;
+    font-weight: normal;
+}
+
+.topic-name .btn-star {
+    float: right;
+}
+
+.dicon-blk {
+    top: 0;
+    right: 0;
+}
+
+.dicon-blk li {
+    display: inline-block;
+}
+
+.hd-detail .col-right .edit-del {
+    opacity: 0;
+}
+
+.hd-detail .col-right .edit-del i {
+    opacity: 0.2;
+}
+
+.hd-detail .col-right .edit-del i:hover {
+    opacity: 1;
+}
+
+.hd-detail:hover .edit-del {
+    opacity: 1;
+}
+
+.hdd-user i {
+    bottom: 0;
+}
+
+.ticket-block .hd-body {
+    border-left: 3px solid #ccc;
+}
+
+.ticket-block .col.border-right {
+    border-color: #ccc !important;
+}
+
+.ticket-block .ticket-type-icon {
+    font-weight: 500;
+    color: #111;
+}
+
+.ticket-block .excerpt h6 {
+    color: #686c71;
+    font-weight: 500;
+}
+
+.ticket-block .excerpt h6 a {
+    color: #686c71;
+}
+
+.ticket-block .excerpt h6 a:hover {
+    text-decoration: underline !important;
+    color: #111;
+}
+
+.ticket-block.open-tic .hd-body {
+    border-color: #ea394a;
+}
+
+.ticket-block.close-tic .hd-body {
+    border-color: #5AC17F;
+}
+
+.right-col .card-footer label {
+    font-weight: 500;
+}
+
+.q-view {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1030;
+    top: 0;
+    right: 0;
+    visibility: hidden;
+}
+
+.q-view .overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.q-view .content {
+    width: 585px;
+    height: 100vh;
+    z-index: 5;
+    position: absolute;
+    top: 0;
+    background-color: #fff;
+    padding-top: 20px;
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.3);
+    right: -765px;
+    transition: right 0.195s ease-in, visibility 0s linear 0.195s;
+    min-height: 100vh;
+    overflow: auto;
+}
+
+.q-view.active {
+    visibility: visible;
+}
+
+.q-view.active .content {
+    right: 0;
+    transition: right 0.225s ease-out;
+}
+
+.select2-container--default {
+    margin-bottom: 10px;
+}
+
+.select2-container--default .select2-selection {
+    border-color: #e2e5e8;
+}
+
+.hdd-right-side {
+    width: 495px;
+}
+
+.hdd-right-side .hdd-right-inner {
+    position: fixed;
+    width: 465px;
+}
+
+.span-content a {
+    padding: 0 7px;
+}
+
+.file-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.file-btn input {
+    position: absolute;
+    font-size: 50px;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+
+@media (max-width: 992px) {
+    .hd-detail .col-right .edit-del {
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .hdd-right-side {
+        width: 100%;
+    }
+
+    .hdd-right-side .hdd-right-inner {
+        position: static;
+        width: 100%;
+    }
+}
+
+@media (max-width: 575px) {
+    .q-view .content {
+        width: 450px;
+    }
+}
+
+@media (max-width: 380px) {
+    .q-view .content {
+        width: 300px;
+    }
+}
+
+/**====== Help Desk Application css start ======**/
+
+/**====== other css end ======**/
+// bootstrap-maxlength css start
+.bootstrap-maxlength:not(.badge) {
+    background: $body-bg;
+    margin-top: 0;
+    box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.5);
+    padding: .35em .65em;
+    font-size: .75em;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    // background:$primary;
+}
+
+// datepicker css start
+.datepicker-dropdown .datepicker-picker {
+    box-shadow: 0 1px 10px 0 rgba(69, 90, 100, .2);
+}
+
+.datepicker-view {
+    .week {
+        color: $primary;
+    }
+}
+
+.datepicker-cell {
+
+    &.selected {
+        background-color: $primary;
+        ;
+        color: #fff;
+
+        &:hover {
+            background-color: $primary;
+            color: #fff;
+        }
+    }
+
+    &.disabled {
+        color: theme-color-level('primary', $alert-bg-level);
+        background-color: $body-bg;
+    }
+
+
+    &.highlighted:not(.selected):not(.range):not(.today) {
+        background-color: theme-color-level('primary', $alert-bg-level);
+        color: $primary;
+        border-radius: 0;
+
+        &:not(.disabled):hover {
+            background-color: theme-color-level('primary', $alert-bg-level);
+            color: $primary;
+        }
+
+        &.focused {
+            background-color: $primary;
+            color: #fff;
+        }
+    }
+}
+
+.datepicker-input.in-edit {
+    border-color: $primary;
+}
+
+// light box css start
+.modal-lightbox {
+    .modal-body {
+        border: 4px solid #fff;
+        border-radius: 4px;
+    }
+}
+
+// slider css start
+/* nav */
+.tns-controls {
+    text-align: center;
+    margin-bottom: 10px;
+
+    [aria-controls] {
+        font-size: 15px;
+        margin: 0 5px;
+        padding: 0 1em;
+        height: 2.5em;
+        color: #fff;
+        background: $primary;
+        border-radius: 3px;
+        border: 0;
+    }
+}
+
+[data-action] {
+    display: block;
+    margin: 10px auto;
+    font-size: 17px;
+    min-width: 3em;
+    text-align: center;
+    background: transparent;
+    border: 0;
+}
+
+.tns-controls [disabled] {
+    color: #999999;
+    background: #B3B3B3;
+    cursor: not-allowed !important;
+}
+
+.tns-nav {
+    text-align: center;
+    margin: 10px 0;
+
+    > {
+        [aria-controls] {
+            width: 9px;
+            height: 9px;
+            padding: 0;
+            margin: 0 5px;
+            border-radius: 50%;
+            background: #ddd;
+            border: 0;
+        }
+
+        .tns-nav-active {
+            background: #999;
+        }
+    }
+}
+
+.thumbnails {
+    margin: 20px 0;
+    text-align: center;
+
+    li {
+        display: inline-block;
+        cursor: pointer;
+        border: 5px solid #fff;
+    }
+
+    .tns-nav-active {
+        background: none;
+        border-color: $primary;
+    }
+
+    img {
+        height: auto;
+        width: 46px;
+    }
+}
+
+.customize-tools {
+    position: relative;
+}
+
+.controls {
+    text-align: center;
+
+    li {
+        display: block;
+        position: absolute;
+        top: 50%;
+        height: 60px;
+        line-height: 60px;
+        margin-top: -30px;
+        padding: 0 15px;
+        cursor: pointer;
+        font-size: 30px;
+        transition: background 0.3s;
+    }
+
+    .prev {
+        left: 0;
+    }
+
+    .next {
+        right: 0;
+    }
+
+    li:hover {
+        background: #f2f2f2;
+    }
+}
+
+// vtree css start
+.vtree a.vtree-leaf-label {
+    color: $body-color;
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: $primary;
+    }
+}
+
+// type-ahead css start
+.typeahead {
+    position: relative;
+
+    &>ul {
+        background-color: #FFFFFF;
+        border-radius: 4px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.17);
+        display: none;
+        float: left;
+        font-size: 14px;
+        left: 0;
+        list-style: none;
+        margin: 2px 0 0;
+        min-width: 170px;
+        padding: 5px 0;
+        position: absolute;
+        text-align: left;
+        top: 100%;
+        z-index: 1000;
+
+        >li {
+            >a {
+                clear: both;
+                color: #333;
+                cursor: default;
+                display: block;
+                font-weight: 400;
+                line-height: 1.42857143;
+                padding: 3px 20px;
+                white-space: nowrap;
+            }
+
+            &.active>a,
+            >a:hover {
+                background-color: #3F9BFA;
+                color: #FFFFFF;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+.introjs-button{
+    text-shadow: none !important;
+    margin-right: 0 !important;
+    @extend .btn;
+    @extend .btn-primary;
+    &.introjs-prevbutton{
+        @extend .btn-secondary;
+    }
+}

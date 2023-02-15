@@ -1,0 +1,367 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} User List {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+ <!-- for delete  -->
+ <link rel="stylesheet" href="{{ config.ASSETS_ROOT }}/css/plugins/style.css">
+ <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+
+{% endblock stylesheets %}
+
+{% block content %}	
+
+<!-- [ Main Content ] start -->
+<div class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+        <div class="pcoded-content">
+            <div class="pcoded-inner-content">
+                <div class="main-body">
+                    <div class="page-wrapper">
+                        <!-- [ breadcrumb ] start -->
+                        <div class="page-header">
+                            <div class="page-block">
+                                <div class="row align-items-center">
+                                    <div class="col-md-12">
+                                        <div class="page-header-title">
+                                            <h5 class="m-b-10">User List</h5>
+                                        </div>
+                                        <ul class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="/"><i
+                                                        class="feather icon-home"></i></a></li>
+                                            <li class="breadcrumb-item"><a href="#!">User</a></li>
+                                            <li class="breadcrumb-item"><a href="#!">User List</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- [ breadcrumb ] end -->
+                        <!-- [ Main Content ] start -->
+                        <div class="row">
+                            
+                            <div class="col-lg-12">
+                                <div class="card user-profile-list">
+                                    <div class="card-body">
+                                        <div class="dt-responsive table-responsive">
+                                            <table id="user-list-table" class="table nowrap">
+                                                <thead>
+                                                    <tr>
+                                                        <th>User</th>
+                                                        <th>Website</th>
+                                                        <th>Phone</th>
+                                                        <th>Registration Date</th>
+                                                        <th>Status</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    
+                                                    {% for user in context['users'] %}
+                                                  
+                                                    <tr id="tr_{{user.id}}">
+                                                        <td>
+                                                            <div class="d-inline-block align-middle">
+
+                                                                <img src="{{ config.ASSETS_ROOT }}{{user.image}}"
+                                                                    alt="user image" class="img-radius align-top m-r-15"
+                                                                    style="width:40px;">
+                                                                <div class="d-inline-block">
+                                                                    <h6 class="m-b-0">
+                                                                        {% if user.email %} 
+                                                                            {{user.email}}
+                                                                        {% else %}  
+                                                                            UserID: {{user.user}}
+                                                                        {% endif %}      
+                                                                    </h6>
+                                                                    <p class="m-b-0">
+                                                                        {% if user.full_name %}
+                                                                            {{user.full_name}}
+                                                                        {% endif %}  
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            {% if user.website and user.website|length > 1 %}
+                                                                <a target="_blank" href="{{user.website}}">{{user.website}}</a>
+                                                            {% else %}
+                                                                -
+                                                            {% endif %}                                                            
+                                                        </td>
+                                                        <td>
+                                                            {% if user.phone %}
+                                                                {{user.phone}}
+                                                            {% else %}
+                                                                -
+                                                            {% endif %}
+                                                        </td>
+
+                                                        <td>{{user.date_created.strftime('%Y-%m-%d') }}</td>
+                                                
+                                                        <td>
+                                                            <div class="overlay_status" id="overlay_status_update_{{user.id}}">
+                                                                <div class="cv-spinner">
+                                                                    <span class="spinner"></span>
+                                                                </div>
+                                                            </div>
+                                                            <label class="switch">
+                                                                <input onchange="statusUpdate({{user.id}})" class="statusCheck" type="checkbox" value="{{user.user_id.status}}" {% if user.user_id.status == 1 %}checked {% endif %}>
+                                                                <span class="slider"></span>
+                                                            </label>
+                                                        </td>
+                                                        <td>
+                                                            <span class="badge bg-light-success">Active</span>
+                                                            <div class="overlay-edit">
+                                                                <button type="button"
+                                                                    class="btn btn-icon btn-success" data-bs-toggle="modal"
+                                                                    data-bs-target="#profileModel" id="editUser_{{user.id}}" onclick="getUser(this.value)" value="{{user.id}}"><i
+                                                                        class="feather icon-check-circle"></i></button>
+                                                                <button type="button" class="btn btn-icon btn-danger" onClick="deleteUser({{user.id}})" href="javascript:;"><i
+                                                                        class="feather icon-trash-2"></i></button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    {% endfor %}
+
+                                                </tbody>
+                                               
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- [ Main Content ] end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- model for user edit -->
+<div id="profileModel" class="modal fade" tabindex="-1" role="dialog"
+aria-labelledby="profileModel" aria-hidden="true">
+<div id="overlay">
+    <div class="cv-spinner">
+        <span class="spinner"></span>
+    </div>
+</div>
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="profileModel">User Edit
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                aria-label="Close"></button>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="alert alert-success success_message" id="success_message">
+                    <strong>Success!</strong> Indicates a successful or positive action.
+                  </div>
+            </div>
+        </div>
+        <form method="put" id="userEditForm"  enctype=multipart/form-data>
+            <input type="hidden" id="user_id" name="user_id">
+            <div class="modal-body">
+                <div class="row mt-2">
+                    <div class="col-sm-6">
+                        <label class="form-label">Name</label>
+                        <input type="text" id="full_name" name="full_name" class="form-control">
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label">Bio</label>
+                        <input type="text" id="bio" name="bio" class="form-control">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-sm-6">
+                        <label class="form-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" readonly>
+                        <section class="display-error-message">
+                        </section>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label">Phone</label>
+                        <input type="text" id="phone" name="phone" class="form-control">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-sm-6">
+                        <label class="form-label">Website</label>
+                        <input type="text" id="website" name="website" class="form-control">
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label">Zipcode</label>
+                        <input type="text" id="zipcode" name="zipcode" class="form-control">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-sm-12">
+                        <label class="form-label">Address</label>
+                        <input type="text" id="address" name="address" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn  btn-secondary"
+                    data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn  btn-primary">Save
+                    changes</button>
+            </div>
+           
+        </form>
+    </div>
+</div>
+</div>
+<!-- model end -->
+
+</div>
+<!-- [ Main Content ] end -->
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
+<script>
+
+    const dataTable = new simpleDatatables.DataTable("#user-list-table");
+
+    // get user
+    function getUser(value){
+       
+        $("#overlay").fadeIn(300);
+        
+        $.ajax({
+            url : "{{ url_for('authentication_blueprint.edit_user') }}",
+            type : 'GET',
+            data : {'user_id':value},
+            dataType:'json',
+            success : function(data) { 
+                
+                $('#user_id').val(data['user_id'])
+                $('#full_name').val(data['full_name'])
+                $('#bio').val(data['bio'])
+                $('#email').val(data['email'])
+                $('#phone').val(data['phone'])
+                $('#website').val(data['website'])
+                $('#zipcode').val(data['zipcode'])
+                $('#address').val(data['address'])
+                
+            },
+                error : function(request,error)
+            {
+                alert(JSON.parse(request.responseText)['error']);
+                return
+                }
+            }).done(function () {
+                setTimeout(function () {
+                    $("#overlay").fadeOut(300);
+                }, 500);
+            })
+    }
+    
+// edit user
+$('#userEditForm').on('submit',function (e) {
+    
+    var formData = new FormData($("#userEditForm")[0]);
+
+    //var files = $('#imageid')[0].files;
+    // Check file selected or not
+    //if (files.length > 0) {
+    //    formData.append('imageid', files[0]);
+    //}
+
+    e.preventDefault();
+    $.ajax({
+        type: 'PUT',
+        url:  "{{ url_for('authentication_blueprint.edit_user') }}",
+        data: formData,
+        async: false,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function (res) {
+    
+        $('#success_message').text(res['message'])
+        $('#success_message').fadeIn();
+            setTimeout(function() {
+                    setTimeout(function() {
+                        $('#success_message').fadeOut("slow");
+                    }, 2000);
+            window.location.reload();
+            },1000);
+            },
+            error : function(request,error)
+            {
+                alert(JSON.parse(request.responseText)['error']);
+                window.location.reload();
+            }
+        });
+   
+});
+
+// end
+
+// for status checked unchecked
+function statusUpdate(id){
+    $("#overlay_status_update_"+id).fadeIn(300);
+    $.ajax({
+        url : "{{ url_for('authentication_blueprint.update_status') }}",
+        type : 'PUT',
+        data : {'user_id':id},
+        dataType:'json',
+        success : function(data) {
+           location.reload()
+            
+        },
+            error : function(request,error)
+        {
+            alert(JSON.parse(request.responseText)['error']);
+            return
+            }
+        }).done(function () {
+                setTimeout(function () {
+                    $("#overlay_status_update_"+id).fadeOut(300);
+            }, 400);
+    })
+}
+
+// Delete Django Ajax Call swal
+function deleteUser(id) {
+   swal({
+      title: "Are you sure?",
+      text: "You will not be able to recover this record !",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "Yes, delete it!",
+      closeOnConfirm: false,
+      closeOnCancel: true
+   },
+   function(isConfirm){
+      if (isConfirm) {
+      $.ajax({
+        type: "DELETE",
+        url: "{{ url_for('authentication_blueprint.delete_user') }}",
+        data: {'user_id': id},
+        dataType: 'json',
+            success: function (data) {
+               window.location.reload();
+               swal("Done!","It was succesfully deleted!","success");
+            }
+      });
+      }else{
+            swal("Cancelled", "Your imaginary file is safe :)", "error");
+      } 
+   })
+}
+</script>
+{% endblock javascripts %}

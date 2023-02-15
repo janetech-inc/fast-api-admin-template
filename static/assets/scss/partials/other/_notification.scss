@@ -1,0 +1,81 @@
+.alert-dismissable .close,
+.alert-dismissible .close {
+    color: inherit;
+    text-shadow: none;
+}
+@-webkit-keyframes progress-bar-stripes {
+    from {
+        background-position: 40px 0;
+    }
+
+    to {
+        background-position: 0 0;
+    }
+}
+@keyframes progress-bar-stripes {
+    from {
+        background-position: 40px 0;
+    }
+
+    to {
+        background-position: 0 0;
+    }
+}
+
+.alert-inverse {
+    background-color: #333;
+    border-color: transparent;
+    color: #fff;
+
+    .close {
+        position: relative;
+        top: -2px;
+        right: -21px;
+        color: #fff;
+        text-shadow: none;
+    }
+
+    .alert-link {
+        color: #e6e6e6;
+    }
+}
+
+.growl-animated {
+    &.alert-inverse {
+        box-shadow: 0 0 5px rgba(51, 51, 51, 0.5);
+    }
+
+    &.alert-info {
+        box-shadow: 0 0 5px transparentize($primary-color, 0.5);
+    }
+
+    &.alert-success {
+        box-shadow: 0 0 5px transparentize($success-color, 0.5);
+    }
+
+    &.alert-warning {
+        box-shadow: 0 0 5px transparentize($warning-color, 0.5);
+    }
+
+    &.alert-danger {
+        box-shadow: 0 0 5px transparentize($danger-color, 0.5);
+    }
+}
+[data-notify] .close {
+    border: 0;
+    opacity: 0.5;
+    width: 1em;
+    height: 1em;
+    margin-top: 5px;
+    color: transparent !important;
+    background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23000000' viewBox='0 0 16 16'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+[data-notify="progressbar"] {
+    margin-bottom: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+}

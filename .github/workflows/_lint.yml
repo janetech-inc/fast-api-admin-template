@@ -1,0 +1,14 @@
+name: Lint rust service
+
+on:
+  workflow_call:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Run fmt
+      run: cargo fmt --check
+    - name: Run clippy
+      run: cargo clippy

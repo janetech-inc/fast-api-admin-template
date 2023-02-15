@@ -1,0 +1,20 @@
+
+name: Main branch workflow
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  lint:
+    uses: ./.github/workflows/_lint.yml
+
+  test:
+    uses: ./.github/workflows/_test.yml
+
+  deploy:
+    needs: [lint, test]
+    uses: ./.github/workflows/_deploy.yml
+    with:
+        env: dev
+    secrets: inherit

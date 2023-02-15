@@ -1,0 +1,95 @@
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.nav-link {
+    display: block;
+    padding: 10px 24px;
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    &.disabled {
+        opacity: 0.7;
+    }
+}
+
+/* ======================== Tabs =============================== */
+
+.nav-tabs {
+    border-bottom: none;
+    .nav-link {
+        border: none;
+        color: $theme-font-color;
+        &:hover {
+            color: $primary-color;
+        }
+
+        &.disabled {
+            opacity: 0.7;
+        }
+    }
+
+    .nav-item.show .nav-link,
+    .nav-link.active {
+        border: none;
+        color: $theme-heading-color;
+        box-shadow: 0 -5px 10px 0 rgba(0, 0, 0, 0.05);
+    }
+}
+/* =======================   Pills ================== */
+
+.nav-pills {
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 3px 10px 0 rgba(0,0,0,0.05);
+    .nav-link {
+        border-radius: 5px;
+    }
+
+    .nav-link.active,
+    .show > .nav-link {
+        color: #fff;
+        background: $primary-color;
+        box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* ==================== Justified variants ===================*/
+
+.nav-fill {
+    .nav-item {
+        flex: 1 1 auto;
+        text-align: center;
+    }
+}
+
+.nav-justified {
+    .nav-item {
+        flex-basis: 0;
+        flex-grow: 1;
+        text-align: center;
+    }
+}
+/* Tabbable tabs */
+
+/* Hide tabbable panes to start, show them when `.active` */
+
+.tab-content {
+    padding: 35px 30px;
+    background: #fff;
+    box-shadow: 0 3px 10px 0 rgba(0,0,0,0.05);
+
+    > .tab-pane {
+        display: none;
+    }
+
+    > .active {
+        display: block;
+    }
+}

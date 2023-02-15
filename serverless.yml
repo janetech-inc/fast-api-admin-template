@@ -1,0 +1,135 @@
+service: spacy-nlp
+
+provider:
+  name: aws
+  apiName: ${opt:stage,'dev'}-umls-linker
+  runtime: python3.9
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+  timeout: 600
+  memorySize: 10240
+  logRetentionInDays: 7
+  architecture: arm64
+  versionFunctions: false
+  environment:
+    SCISPACY_CACHE: /mnt/tmp
+  ecr:
+    images:
+      appimage:
+        path: ./
+  vpc:
+    securityGroupIds:
+      - ${ssm:/${self:provider.stage}/vpc/default_security_group_id}
+    subnetIds: ${self:custom.vpcSubnetIds.${self:provider.stage}}
+
+  
+custom:
+  efsPath: /mnt/tmp
+  vpcSubnetIds:
+    dev:
+      - ${ssm:/${self:provider.stage}/vpc/private_subnet_0}
+      - ${ssm:/${self:provider.stage}/vpc/private_subnet_1}
+    stage:
+      - ${ssm:/${self:provider.stage}/vpc/private_subnet_0}
+      - ${ssm:/${self:provider.stage}/vpc/private_subnet_1}
+      - ${ssm:/${self:provider.stage}/vpc/private_subnet_2}
+    prod:
+      - ${ssm:/${self:provider.stage}/vpc/private_subnet_0}
+      - ${ssm:/${self:provider.stage}/vpc/private_subnet_1}
+      - ${ssm:/${self:provider.stage}/vpc/private_subnet_2}
+  defaultAwsProperties:
+    - Type: AWS::Lambda::Function
+      Properties:
+        FileSystemConfigs:
+          - Arn: arn:aws:elasticfilesystem:us-east-1:916223412285:access-point/fsap-0ef1325e7f0a82c53
+            LocalMountPath: ${self:custom.efsPath}
+
+functions:
+  linker:
+    reservedConcurrency: 3
+    maximumEventAge: 60
+    maximumRetryAttempts: 0
+    image:
+      name: appimage
+      command:
+          - main.handler
+      entryPoint:
+          - '/lambda-entrypoint.sh'
+    events:
+      - http:
+          path: link-abstract
+          method: POST
+          private: false
+          cors: true
+
+
+
+service: fast-api-admin-template
+
+plugins:
+  - serverless-plugin-warmup
+  - serverless-offline
+
+custom:
+  # customDomain:
+  #   domainName: pubmed-extractor-${self:provider.stage}.system.com
+  #   stage: "${self:provider.stage}"
+  #   basePath: ""
+  #   certificateName: "*.system.com"
+  #   createRoute53Record: true
+  warmup:
+    default:
+      enabled: true
+      events:
+        - schedule: rate(3 minutes)
+      prewarm: true
+      concurrency: 10
+
+provider:
+  name: aws
+  architecture: arm64
+  apiName: ${opt:stage,'dev'}-fast-api-admin
+  runtime: python3.9
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+  memorySize: 10240
+  timeout: 30
+  logRetentionInDays: 14
+  versionFunctions: true
+
+  environment:
+    STAGE: ${self:provider.stage}
+    AWS_LAMBDA:  true
+
+
+  ecr:
+    images:
+      appimage:
+        path: ./
+
+functions:
+  stream:
+    timeout: 28
+    maximumEventAge: 60
+    maximumRetryAttempts: 0
+    image:
+      name: appimage
+      command:
+          - apps.main.handler
+      entryPoint:
+          - '/lambda-entrypoint.sh'
+    warmup:
+      default:
+        enabled: true
+    events:
+      - httpApi:
+          path: /
+          method: GET
+      - httpApi:
+          path: /{proxy+}
+          method: GET
+
+
+  
+
+ 

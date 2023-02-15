@@ -1,0 +1,117 @@
+// =======================================
+//     List of variables for layout
+// =======================================
+/*
+    description Of variables for build for theme layouts
+        1) menu-caption-color
+            List of color for sidebar menu caption
+
+        2) brand-background
+            List of color for logo background
+
+        3) header-dark-background
+            List of color for Dark Header
+
+        4) header-light-background
+            List of color for light Header
+
+        5) menu-dark-background
+            List of color for Dark sidebar menu
+
+        6) menu-light-background
+            List of color for light sidebar menu
+
+        7) menu-active-color
+            List of color for Active item highliter
+
+        8) menu-icon-color
+            List of color for sidebar menu items icon colors
+*/
+
+
+$header-height: 70px;
+$Menu-width: 264px;
+$Menu-collapsed-width: 80px;
+
+// color list for build layouts
+// temp variables
+$theme-color: linear-gradient(169deg, #fc0a7e 15%, #b32e6e);
+$theme-color2: linear-gradient(-135deg, #899FD4 0%, #A389D4 100%);
+$primary-color: #602bb6;
+$warning-color: #f4c22b;
+$danger-color: #f44236;
+$success-color: #1de9b6;
+$purple-color: #a389d4;
+$info-color: #3ebfea;
+$secondary-color: #748892;
+$default-color: #d6d6d6;
+$light-color: #f2f2f2;
+$dark-color: #37474f;
+$inverse-color: $dark-color;
+$theme-border: #eaeaea;
+
+// header
+$brand-background: #323232;
+$header-dark-background: #323232;
+$header-dark-text-color: #fff;
+$header-light-background: #fff;
+$header-light-text-color: #323232;
+
+// Menu
+$menu-caption-color: #14171d;
+$menu-dark-background: #323232;
+$menu-dark-text-color: #a9b7d0;
+$menu-light-background: #fff;
+$menu-light-text-color: #323232;
+$menu-active-color: #602bb6;
+
+// dark layout colors
+$dark-layout: #212224;
+$dark-layout-font: #adb7be;
+
+
+// Menu icon
+$menu-icon-color: $primary-color, #ff5252, #01a9ac ,#9575CD , #23b7e5, $warning-color;
+// Header background
+$color-header-name: blue, red, purple, lightblue, dark;
+$color-header-color: $primary-color, #ff5252, #9575CD ,#23b7e5,lighten($dark-layout,7%);
+// Menu background
+$color-menu-name: blue, red, purple, lightblue, dark;
+$color-menu-color: $primary-color, #ff5252, #9575CD ,#23b7e5,lighten($dark-layout,7%);
+// Active background color
+$color-active-name: blue, red, purple, lightblue, dark;
+$color-active-color: $primary-color, #ff5252, #9575CD ,#23b7e5,lighten($dark-layout,7%);
+ // Menu title color
+$color-title-name: blue, red, purple, lightblue, dark;
+$color-title-color: $primary-color, #ff5252, #9575CD ,#23b7e5,lighten($dark-layout,7%);
+
+ // layout-6 background color
+$layout-6-bg-color:#23b7e5;
+
+
+$theme-font-family: 'Open Sans', sans-serif;
+$theme-font-size: 14px;
+$theme-background: #f4f7fa;
+$theme-font-color: #888;
+$theme-heading-color: #111;
+
+$color-name: c-blue,c-red,c-green,c-yellow,c-purple;
+$color-color: $primary-color,$danger-color,$success-color ,$warning-color ,$purple-color;
+$color-bt-name: primary,danger,success,warning,info,dark;
+$color-bt-color: $primary-color,$danger-color,$success-color ,$warning-color ,$info-color,$dark-color;
+
+// form-control variables
+$form-bg: #f0f3f6;
+
+$theme-colors: () !default;
+$theme-colors: map-merge(("primary": $primary-color, "secondary": $secondary-color, "success": $success-color, "info": $info-color, "warning": $warning-color, "danger": $danger-color, "light": $light-color, "dark": $dark-color), $theme-colors); // Color contrast
+$yiq-contrasted-threshold: 200 !default;
+$yiq-dark-color: #37474f;
+$yiq-light-color: #fff;
+$theme-color-interval: 8% !default;
+$alert-bg-level: -10 !default;
+$alert-border-level: -9 !default;
+$alert-color-level: 6 !default;
+
+
+$soft-bg-level: -80%;

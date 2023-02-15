@@ -1,0 +1,69 @@
+<script src="{{ config.ASSETS_ROOT }}/js/plugins/popper.min.js"></script>
+<script src="{{ config.ASSETS_ROOT }}/js/plugins/bootstrap.min.js"></script>
+<script src="{{ config.ASSETS_ROOT }}/js/plugins/perfect-scrollbar.min.js"></script>
+<script src="{{ config.ASSETS_ROOT }}/js/pcoded.js?v=78787"></script>
+<script src="{{ config.ASSETS_ROOT }}/js/plugins/choices.min.js"></script>
+<script src="{{ config.ASSETS_ROOT }}/js/plugins/simple-datatables.js"></script>
+<!-- menu js not used in production -->
+
+<script src="{{ config.ASSETS_ROOT }}/js/dark-mode.js"></script>
+<script src="{{ config.ASSETS_ROOT }}/js/menu-setting.js"></script>
+
+<!-- for ajax -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<!-- sweet alert Js -->
+<script src="{{ config.ASSETS_ROOT }}/js/plugins/sweetalert2.all.min.js"></script>
+
+<script>
+    // get image
+    function readURL(input) {
+        console.log(true)
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('.imageshow').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    // end
+
+    // display image
+    var loadFile = function(event) {
+        var output = document.getElementById('image-display');
+        if (event.target.files[0]) {
+            var size = event.target.files[0].size;
+            if (size > 256000) {
+                alert("Maximum file size exceeds");
+                return;
+            }else {
+                output.src = URL.createObjectURL(event.target.files[0]);
+                output.onload = function () {
+
+                    URL.revokeObjectURL(output.src) // free memory
+                }
+            }
+        }
+    };
+
+    // check email exists or not
+    $("input.emailExists").on('keyup',function () {
+    $.ajax({
+            type: 'GET',
+            url: "",
+            dataType: 'json',
+            data: { 'email' : $(this).val() },
+            success : function(data){
+                $('.display-error-message').html('<p><strong class="display-success-message">'+data['message']+'<strong></p>')
+            },
+                error : function(request,error)
+            {
+                $('.display-error-message').html('<p><strong class="message-error">'+JSON.parse(request.responseText)['error']+'</strong></p>')
+                return
+                // alert(JSON.parse(request.responseText)['error']);
+            }
+        });
+    });
+    </script>
+

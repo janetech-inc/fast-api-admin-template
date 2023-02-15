@@ -1,0 +1,239 @@
+/**  =====================
+      Radio & Checked css start
+==========================  **/
+.checkbox {
+    padding: 10px 0;
+    min-height: auto;
+    position: relative;
+    margin-right: 5px;
+
+    input[type=checkbox] {
+        margin: 0;
+        display: none;
+        width: 22px;
+
+        + .cr {
+            padding-left: 0;
+
+            &:before {
+                content: "\e83f";
+                width: 22px;
+                height: 22px;
+                display: inline-block;
+                margin-right: 10px;
+                border: 2px solid #e9eaec;
+                border-radius: 3px;
+                font: {
+                    size: 15px;
+                    family: 'feather';
+                    weight: 400;
+                }
+                line-height: 19px;
+                vertical-align: bottom;
+                text-align: center;
+                background: #ffffff;
+                color: transparent;
+                cursor: pointer;
+                transition: all 0.2s ease-in-out;
+            }
+        }
+
+        &:checked + .cr:before {
+            background: #1dd5d2;
+            border-color: #1dd5d2;
+            color: #ffffff;
+        }
+
+        &.disabled + .cr,
+        &:disabled + .cr {
+            opacity: 0.5;
+        }
+
+        &.disabled + .cr:before,
+        &:disabled + .cr:before {
+            cursor: not-allowed;
+        }
+    }
+
+    &.checkbox-fill {
+        input[type=checkbox] {
+            + .cr {
+                &:after {
+                    content: "";
+                    width: 22.5px;
+                    height: 22.5px;
+                    display: inline-block;
+                    margin-right: 10px;
+                    border: 2px solid #e9eaec;
+                    border-radius: 2px;
+                    vertical-align: bottom;
+                    text-align: center;
+                    background: transparent;
+                    cursor: pointer;
+                    transition: all 0.2s ease-in-out;
+                    position: absolute;
+                    top: 8.5px;
+                    left: 3px;
+                }
+
+                &:before {
+                    opacity: 0;
+                    content: "\e840";
+                    font-size: 27px;
+                    background: transparent;
+                }
+            }
+
+            &:checked {
+                + .cr {
+                    &:after {
+                        opacity: 0;
+                    }
+
+                    &:before {
+                        opacity: 1;
+                        background: transparent;
+                        color: #1dd5d2;
+                        border-color: transparent;
+                    }
+                }
+            }
+        }
+    }
+    @each $value in $color-bt-name {
+        $i: index($color-bt-name, $value);
+
+        &.checkbox-#{$value} input[type=checkbox]:checked + .cr:before {
+            background: nth($color-bt-color,$i);
+            border-color: nth($color-bt-color,$i);
+            color: #ffffff;
+        }
+
+        &.checkbox-fill.checkbox-#{$value} input[type=checkbox]:checked + .cr:before {
+            background: transparent;
+            color: nth($color-bt-color,$i);
+            border-color: transparent;
+        }
+    }
+
+    .cr {
+        cursor: pointer;
+    }
+}
+
+.radio {
+    padding: 10px 0;
+    min-height: auto;
+    position: relative;
+    margin-right: 5px;
+
+    input[type=radio] {
+        margin: 0;
+        display: none;
+        width: 22px;
+
+        + .cr {
+            padding-left: 0;
+            position: relative;
+
+            &:after,
+            &:before {
+                content: "";
+                display: inline-block;
+                margin-right: 10px;
+                border-radius: 50%;
+                vertical-align: bottom;
+                background: #fff;
+                color: transparent;
+                cursor: pointer;
+                transition: all 0.2s ease-in-out;
+            }
+
+            &:before {
+                width: 22px;
+                height: 22px;
+                border: 2px solid #e9eaec;
+            }
+
+            &:after {
+                width: 12px;
+                height: 12px;
+                position: absolute;
+                top: 5px;
+                left: 5px;
+            }
+        }
+
+        &:checked {
+            + .cr {
+                &:before {
+                    border-color: #1dd5d2;
+                }
+
+                &:after {
+                    background: $theme-color;
+                }
+            }
+        }
+
+        &:disabled {
+            + .cr {
+                opacity: 0.5;
+                cursor: not-allowed;
+
+                &:after,
+                &:before {
+                    cursor: not-allowed;
+                }
+            }
+        }
+    }
+
+    &.radio-fill {
+        input[type=radio] {
+            + .cr {
+                &:after {
+                    width: 18px;
+                    height: 18px;
+                    top: 2px;
+                    left: 2px;
+                }
+            }
+        }
+    }
+    @each $value in $color-bt-name {
+        $i: index($color-bt-name, $value);
+
+        &.radio-#{$value} input[type=radio]:checked + .cr {
+            &:before {
+                border-color: nth($color-bt-color,$i);
+            }
+
+            &:after {
+                background: nth($color-bt-color,$i);
+            }
+        }
+    }
+
+    .cr {
+        cursor: pointer;
+    }
+}
+@-moz-document url-prefix() {
+    .radio input[type="radio"] + .cr::after {
+        top: 14px;
+    }
+}
+
+.custom-controls-stacked {
+    .radio {
+        input[type=radio] {
+            + .cr {
+                &:after {
+                    top: 15px;
+                }
+            }
+        }
+    }
+}
+/**====== Radio & Checked css end ======**/

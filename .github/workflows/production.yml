@@ -1,0 +1,24 @@
+
+name: Production branch workflow
+
+on:
+  push:
+    branches: [ "production" ]
+
+jobs:
+  lint:
+    uses: ./.github/workflows/_lint.yml
+
+  test:
+    uses: ./.github/workflows/_test.yml
+
+  deploy:
+    needs: [lint, test]
+    uses: ./.github/workflows/_deploy.yml
+    with:
+        env: prod
+    secrets: inherit
+
+  tag:
+    needs: [deploy]
+    uses: ./.github/workflows/_tag.yml

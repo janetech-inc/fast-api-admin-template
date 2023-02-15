@@ -1,0 +1,174 @@
+/**  =====================
+      Data Tables css start
+==========================  **/
+.table {
+    td,
+    th {
+        border-top: 1px solid $theme-border;
+        white-space: nowrap;
+        padding: 1.05rem 0.75rem;
+    }
+
+    thead th {
+        border-bottom: 1px solid $theme-border;
+    }
+
+    tbody + tbody {
+        border-top: 2px solid $theme-border;
+    }
+    > :not(:first-child) {
+        border-top: none;
+    }
+}
+/* Border versions */
+
+.table-bordered {
+    // border: 1px solid $theme-border;
+
+    td,
+    th {
+        border: 1px solid $theme-border;
+    }
+}
+/* Zebra-striping */
+
+.table-striped {
+    tbody tr:nth-of-type(2n + 1) {
+        background-color: transparentize($primary-color, 0.95);
+    }
+}
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+    --bs-table-accent-bg: transparent;
+}
+/* Hover effect */
+
+.table-hover {
+    tbody tr {
+        &:hover {
+            background-color: transparentize($primary-color, 0.95);
+            > * {
+                background: transparent;
+                --bs-table-accent-bg: transparent;
+            }
+        }
+    }
+}
+/* Table backgrounds */
+
+.table {
+    .thead-dark {
+        th {
+            color: #fff;
+            background-color: $dark-color;
+            border-color: darken($dark-color, 10%);
+        }
+    }
+}
+
+.table-dark {
+    color: #fff;
+    background-color: $dark-color;
+
+    td,
+    th,
+    thead th {
+        border-color: darken($dark-color, 10%);
+    }
+
+    &.table-striped {
+        tbody tr:nth-of-type(odd) {
+            background-color: darken($dark-color, 2%);
+        }
+    }
+
+    &.table-hover {
+        tbody tr {
+            &:hover {
+                background-color: darken($dark-color, 5%);
+            }
+        }
+    }
+}
+/* fixed header position */
+
+table.dataTable.fixedHeader-floating {
+    top: 0 !important;
+    @media screen and (max-width: 992px) {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .fixedHeader-locked {
+        display: none !important;
+    }
+}
+@media screen and (max-width: 767px) {
+    div.dataTables_wrapper div.dataTables_paginate,
+    div.dataTables_wrapper div.dataTables_filter {
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+}
+/**  =====================
+      Foo-table css start
+==========================  **/
+
+.footable .pagination > {
+    .active > {
+        a,
+        span {
+            background-color: $primary-color;
+            border-color: $primary-color;
+
+            &:focus,
+            &:hover {
+                background-color: $primary-color;
+                border-color: $primary-color;
+            }
+        }
+    }
+
+    li > {
+        a,
+        span {
+            color: #222;
+        }
+    }
+}
+
+.footable-details.table,
+.footable.table {
+    margin-bottom: 0;
+}
+
+table {
+    &.footable > tfoot > tr.footable-paging > td > span.label {
+        margin-bottom: 0;
+    }
+
+    &.footable-paging-center > tfoot > tr.footable-paging > td {
+        padding-bottom: 0;
+    }
+}
+
+.table-columned > {
+    tbody > {
+        tr > {
+            td {
+                border: 0;
+                border-left: 1px solid $theme-border;
+            }
+
+            th {
+                border: 0;
+            }
+        }
+    }
+}
+/**====== Foo-table css end ======**/
+table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > td:first-child:before,
+table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > th:first-child:before {
+    top: 18px;
+}
+/**====== Data Tables css end ======**/

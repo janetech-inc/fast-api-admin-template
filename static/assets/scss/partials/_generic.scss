@@ -1,0 +1,101 @@
+/**  =====================
+      Generic-class css start
+========================== **/
+/*====== Padding , Margin css starts ======*/
+$i: 0;
+@while $i<=50 {
+    .p {
+        &-#{$i} {
+            padding: #{$i}px;
+        }
+
+        &-t-#{$i} {
+            padding-top: #{$i}px;
+        }
+
+        &-b-#{$i} {
+            padding-bottom: #{$i}px;
+        }
+
+        &-l-#{$i}{
+            padding-left: #{$i}px;
+        }
+
+        &-r-#{$i} {
+            padding-right: #{$i}px;
+        }
+    }
+    .m {
+        &-#{$i} {
+            margin: #{$i}px;
+        }
+
+        &-t-#{$i} {
+            margin-top: #{$i}px;
+        }
+
+        &-b-#{$i} {
+            margin-bottom: #{$i}px;
+        }
+
+        &-l-#{$i} {
+            margin-left: #{$i}px;
+        }
+
+        &-r-#{$i} {
+            margin-right: #{$i}px;
+        }
+    }
+    $i: $i+5;
+}
+/*====== Padding , Margin css ends ======*/
+
+/*====== text-color, background color css starts ======*/
+@each $value in $color-name {
+    $i: index($color-name, $value);
+    .bg-#{$value} {
+        background: nth($color-color,$i),;
+    }
+    .text-#{$value} {
+        color: nth($color-color,$i);
+    }
+}
+/*====== text-color css ends ======*/
+/*====== Card top border css starts ======*/
+@each $value in $color-name {
+    $i: index($color-name, $value);
+    .card-border-#{$value}{
+        border-top: 4px solid nth($color-color,$i);
+    }
+}
+/*====== Card top border ends ======*/
+/*====== Font-size css starts ======*/
+$i: 10;
+@while $i<=80 {
+    .f-#{$i} {
+        font-size: #{$i}px;
+    }
+    $i: $i+2;
+}
+/*====== Font-size css ends ======*/
+/*====== Font-weight css starts ======*/
+$i: 100;
+@while $i<=900 {
+    .f-w-#{$i} {
+        font-weight: #{$i};
+    }
+    $i: $i+100;
+}
+/*====== Font-weight css ends ======*/
+/*====== width, Height css starts ======*/
+$i: 20;
+@while $i<=150 {
+    .wid-#{$i} {
+        width: #{$i}px;
+    }
+    .hei-#{$i} {
+        height: #{$i}px;
+    }
+    $i: $i+5;
+}
+/*====== width, Height css ends ======*/

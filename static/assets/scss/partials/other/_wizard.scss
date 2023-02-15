@@ -1,0 +1,1127 @@
+// =======================================================================
+// SmartWizard v4.4.x
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+
+$card-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.8);
+
+.divider-body {
+  border-color: $body-bg;
+  background: $body-bg;
+}
+
+.sw .toolbar {
+  padding: $card-spacer-y $card-spacer-x;
+}
+
+.sw .toolbar > .btn.disabled,
+.sw .toolbar > .btn:disabled {
+  opacity: 0.5;
+}
+
+.sw > .nav .nav-link {
+  padding: 1rem;
+}
+
+.sw.sw-dark {
+  color: rgba(255, 255, 255, 0.95);
+  background: $dark;
+
+  h4 {
+    color: rgba(255, 255, 255, 0.95);
+  }
+
+  .form-select,
+  .form-control {
+    background: lighten($dark, 3%);
+    border-color: lighten($dark, 6%);
+    color: rgba(255, 255, 255, 0.95);
+  }
+
+  .form-check-input:not(:checked[type="radio"]) {
+    background: lighten($dark, 3%);
+  }
+
+  .divider-body {
+    border-color: lighten($dark, 6%) !important;
+    background: lighten($dark, 6%);
+  }
+}
+
+.sw.sw-loading::before {
+  border-color: $border-color;
+  border-top-color: 10px solid $blue;
+}
+
+/* SmartWizard Theme: Default */
+.sw-theme-default {
+  border: 1px solid $border-color;
+
+  > .tab-content > .tab-pane {
+    padding: $card-spacer-y $card-spacer-x;
+  }
+
+  .toolbar > .btn {
+    color: #fff;
+    background-color: $secondary;
+    border: 1px solid $secondary;
+    padding: $btn-padding-y $btn-padding-x;
+    border-radius: $btn-border-radius;
+    font-weight: $btn-font-weight;
+  }
+
+  > .nav {
+    box-shadow: none !important;
+    border-bottom: 1px solid $border-color;
+
+    .nav-link {
+      &::after {
+        background: $body-bg;
+      }
+
+      &.inactive {
+        color: $text-muted;
+      }
+
+      &.active {
+        color: $primary !important;
+
+        &::after {
+          background: $primary !important;
+        }
+      }
+
+      &.done {
+        color: $primary !important;
+
+        &::after {
+          background: shift-color($primary, $soft-bg-level);
+        }
+      }
+
+      &.danger {
+        color: $danger !important;
+
+        &::after {
+          background: $danger;
+        }
+      }
+    }
+  }
+
+  &.sw-dark {
+    > .nav {
+      box-shadow: none !important;
+      border-bottom: 1px solid $border-color;
+
+      .nav-link {
+        &.inactive {
+          color: rgba(255, 255, 255, 0.5);
+        }
+
+        &.active {
+          color: #fff !important;
+
+          &::after {
+            background: $primary !important;
+          }
+        }
+
+        &.done {
+          color: rgba(255, 255, 255, 0.75) !important;
+
+          &::after {
+            background: rgba(255, 255, 255, 0.75);
+          }
+        }
+      }
+    }
+  }
+}
+
+/* SmartWizard Theme: Arrows */
+.sw-theme-arrows {
+  border: 1px solid $border-color;
+
+  > .tab-content > .tab-pane {
+    padding: $card-spacer-y $card-spacer-x;
+  }
+
+  .toolbar > .btn {
+    color: #fff;
+    background-color: $secondary;
+    border: 1px solid $secondary;
+    padding: $btn-padding-y $btn-padding-x;
+    border-radius: $btn-border-radius;
+    font-weight: $btn-font-weight;
+  }
+
+  > .nav {
+    border-bottom: 1px solid $border-color;
+    background-color: $body-bg;
+
+    .nav-link {
+      padding-left: 40px;
+
+      &::after {
+        border-left-color: $body-bg;
+      }
+
+      &::before {
+        border-left-color: $body-bg;
+      }
+
+      &.inactive {
+        color: $text-muted;
+        border-color: $body-bg;
+        background: $body-bg;
+      }
+
+      &.active {
+        color: #ffffff;
+        border-color: $primary;
+        background: $primary;
+
+        &::after {
+          border-left-color: $primary;
+        }
+      }
+
+      &.done {
+        color: $primary;
+        border-color: shift-color($primary, $soft-bg-level);
+        background: shift-color($primary, $soft-bg-level);
+
+        &::after {
+          border-left-color: shift-color($primary, $soft-bg-level);
+        }
+      }
+
+      &.danger {
+        color: #ffffff;
+        border-color: $danger;
+        background: $danger;
+
+        &::after {
+          border-left-color: $danger;
+        }
+      }
+    }
+  }
+
+  &.sw-dark {
+    color: rgba(255, 255, 255, 0.95);
+    background: $dark;
+
+    > .nav {
+      border-bottom: 1px solid lighten($dark, 10%);
+      background-color: lighten($dark, 10%);
+
+      .nav-link {
+        &::after {
+          border-left: 30px solid $dark;
+        }
+
+        &::before {
+          border-left: 30px solid $dark;
+        }
+
+        &.inactive {
+          color: white;
+          border-color: lighten($dark, 10%);
+          background: lighten($dark, 10%);
+
+          &::after {
+            border-left-color: lighten($dark, 10%);
+          }
+        }
+
+        &.active {
+          color: white;
+          border-color: $dark;
+          background: $dark;
+
+          &::after {
+            border-left-color: $dark;
+          }
+        }
+
+        &.done {
+          color: white;
+          border-color: lighten($dark, 3%);
+          background: lighten($dark, 3%);
+
+          &::after {
+            border-left-color: lighten($dark, 3%);
+          }
+        }
+
+        &.danger {
+          color: #ffffff;
+          border-color: $danger;
+          background: $danger;
+
+          &::after {
+            border-left-color: $danger;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* SmartWizard Theme: Dots */
+
+.sw-theme-dots {
+  > .tab-content > .tab-pane {
+    padding: $card-spacer-y $card-spacer-x;
+  }
+
+  .toolbar > .btn {
+    color: #fff;
+    background-color: $secondary;
+    border: 1px solid $secondary;
+    padding: $btn-padding-y $btn-padding-x;
+    border-radius: $btn-border-radius;
+    font-weight: $btn-font-weight;
+  }
+
+  > .nav {
+    margin-bottom: 0;
+
+    &::before {
+      height: 5px;
+      background-color: $border-color;
+    }
+
+    .nav-link {
+      &::before {
+        background: $border-color;
+        color: $primary;
+      }
+
+      &.inactive {
+        color: shift-color($text-muted, -40%);
+
+        &::after {
+          background-color: shift-color($text-muted, $soft-bg-level);
+        }
+      }
+
+      &.active {
+        color: $primary !important;
+
+        &::after {
+          background-color: $primary !important;
+        }
+      }
+
+      &.done {
+        color: $text-muted;
+
+        &::after {
+          background-color: $text-muted;
+        }
+      }
+
+      &.danger {
+        color: $danger;
+
+        &::after {
+          background-color: $danger;
+        }
+      }
+    }
+  }
+
+  &.sw-dark {
+    color: rgba(255, 255, 255, 0.5);
+    background: $dark;
+
+    > .nav {
+      &::before {
+        background-color: lighten($dark, 6%);
+      }
+
+      .nav-link {
+        &::before {
+          background: lighten($dark, 6%);
+          color: black;
+        }
+
+        &.inactive {
+          color: rgba(255, 255, 255, 0.5);
+
+          &::after {
+            background-color: shift-color($text-muted, -10%);
+          }
+        }
+
+        &.active {
+          color: #fff !important;
+
+          &::after {
+            background-color: $primary !important;
+          }
+        }
+
+        &.done {
+          color: rgba(255, 255, 255, 0.85);
+
+          &::after {
+            background-color: shift-color($primary, -40%);
+          }
+        }
+      }
+    }
+  }
+}
+
+/* SmartWizard Theme: Progress */
+
+.sw-theme-progress {
+  border: 1px solid $border-color;
+
+  > .tab-content > .tab-pane {
+    padding: $card-spacer-y $card-spacer-x;
+  }
+
+  .toolbar > .btn {
+    color: #fff;
+    background-color: $secondary;
+    border: 1px solid $secondary;
+    padding: $btn-padding-y $btn-padding-x;
+    border-radius: $btn-border-radius;
+    font-weight: $btn-font-weight;
+  }
+
+  > .nav {
+    box-shadow: none !important;
+    border-bottom: 1px solid $border-color;
+
+    .nav-link {
+      &::after {
+        background: $card-bg;
+      }
+
+      &.inactive {
+        color: $text-muted;
+      }
+
+      &.active {
+        color: #ffffff !important;
+
+        &::after {
+          background-color: $primary;
+          width: 100%;
+        }
+      }
+
+      &.done {
+        color: #ffffff !important;
+
+        &::after {
+          background: $primary;
+        }
+      }
+
+      &.danger {
+        color: #ffffff !important;
+        cursor: pointer;
+
+        &::after {
+          background: $danger;
+        }
+      }
+    }
+  }
+
+  &.sw-dark {
+    color: rgba(255, 255, 255, 0.5);
+
+    > .nav {
+      background: lighten($dark, 6%);
+      border-bottom-color: lighten($dark, 6%);
+
+      .nav-link {
+        &.active {
+          color: white;
+
+          &::after {
+            background-color: $dark;
+          }
+        }
+
+        &.done {
+          color: #ffffff !important;
+
+          &::after {
+            background: $dark;
+          }
+        }
+      }
+    }
+  }
+}
+
+// =======================================================================
+// =======================================================================
+
+.tabcontrol,
+.wizard {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+
+.tabcontrol a,
+.wizard a {
+  outline: 0;
+}
+
+.tabcontrol ul,
+.wizard ul {
+  list-style: none !important;
+  padding: 0;
+  margin: 0;
+}
+
+.tabcontrol ul > li,
+.wizard ul > li {
+  display: block;
+  padding: 0;
+}
+
+/* Accessibility */
+.tabcontrol > .content > .title,
+.tabcontrol > .steps .current-info,
+.wizard > .content > .title,
+.wizard > .steps .current-info {
+  position: absolute;
+  left: -999em;
+}
+
+/*
+    Wizard
+*/
+.wizard {
+  > .steps {
+    position: relative;
+    display: block;
+    width: 100%;
+  }
+
+  &.vertical {
+    > .steps {
+      display: inline;
+      float: left;
+      width: 30%;
+    }
+
+    > .steps > ul > li {
+      float: none;
+      width: 100%;
+    }
+
+    > .content {
+      display: inline;
+      float: left;
+      margin: 0 2.5% 0.5em;
+      width: 65%;
+    }
+
+    > .actions {
+      display: inline;
+      float: right;
+      margin: 0 2.5%;
+      width: 95%;
+    }
+
+    > .actions > ul > li {
+      margin: 0 0 0 1em;
+    }
+  }
+
+  > {
+    .steps {
+      .number {
+        font-size: 1.429em;
+      }
+
+      > ul > li {
+        width: 25%;
+        float: left;
+      }
+    }
+
+    .actions > ul > li {
+      float: left;
+    }
+  }
+
+  > {
+    .steps {
+      a {
+        display: block;
+        width: auto;
+        margin: 0 0.5em 0.5em;
+        padding: 1em;
+        text-decoration: none;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+
+        &:active,
+        &:hover {
+          display: block;
+          width: auto;
+          margin: 0 0.5em 0.5em;
+          padding: 1em;
+          text-decoration: none;
+          -webkit-border-radius: 5px;
+          -moz-border-radius: 5px;
+          border-radius: 5px;
+        }
+      }
+
+      .disabled a {
+        background: $body-bg;
+        color: $body-color;
+        cursor: default;
+        opacity: 0.6;
+
+        &:active,
+        &:hover {
+          background: $body-bg;
+          color: $body-color;
+          cursor: default;
+        }
+      }
+
+      .current a {
+        background: $primary;
+        color: #fff;
+        cursor: default;
+
+        &:active,
+        &:hover {
+          background: $primary;
+          color: #fff;
+          cursor: default;
+        }
+      }
+
+      .done a {
+        background: transparentize($primary, 0.8);
+        color: $primary;
+
+        &:active,
+        &:hover {
+          background: transparentize($primary, 0.8);
+          color: $primary;
+        }
+      }
+
+      .error a {
+        background: $danger;
+        color: #fff;
+
+        &:active,
+        &:hover {
+          background: $danger;
+          color: #fff;
+        }
+      }
+    }
+
+    .content {
+      background: lighten($body-bg, 2%);
+      display: block;
+      margin: 0.5em;
+      min-height: 8em;
+      overflow: hidden;
+      position: relative;
+      width: auto;
+      border-radius: 5px;
+    }
+  }
+
+  > {
+    .content > .body {
+      padding: 25px;
+
+      ul {
+        list-style: disc !important;
+
+        > li {
+          display: list-item;
+        }
+      }
+
+      > iframe {
+        border: 0 none;
+        width: 100%;
+        height: 100%;
+      }
+
+      input {
+        &.error {
+          background: rgb(251, 227, 228);
+          border-color: $danger;
+          color: $danger;
+        }
+      }
+
+      label {
+        display: inline-block;
+        margin-bottom: 0.5em;
+
+        &.error {
+          color: $danger;
+          display: inline-block;
+          margin-left: 1.5em;
+        }
+      }
+    }
+
+    .actions {
+      position: relative;
+      display: block;
+      text-align: right;
+      width: 100%;
+    }
+  }
+
+  > .actions > ul {
+    display: inline-block;
+    text-align: right;
+
+    > li {
+      margin: 0 0.5em;
+    }
+  }
+
+  > {
+    .actions {
+      a {
+        background: $primary;
+        color: #fff;
+        display: block;
+        padding: 0.5em 1em;
+        text-decoration: none;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+
+        &:active,
+        &:hover {
+          background: $primary;
+          color: #fff;
+          display: block;
+          padding: 0.5em 1em;
+          text-decoration: none;
+          border-radius: 5px;
+        }
+      }
+
+      .disabled a {
+        background: $body-bg;
+        color: #aaa;
+
+        &:active,
+        &:hover {
+          background: $body-bg;
+          color: #aaa;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .steps > ul > li {
+      width: 100%;
+    }
+
+    &.vertical {
+      > .steps,
+      > .content {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.pc-wizard.wizard {
+  .number {
+    display: none;
+  }
+
+  > .steps {
+    a {
+      display: flex;
+      align-items: center;
+      margin: 0.5em;
+      position: relative;
+
+      &:after {
+        content: "";
+
+        font: {
+          family: "Font Awesome 5 Free";
+          weight: 900;
+          size: 20px;
+        }
+
+        position: absolute;
+        right: 0;
+        top: 20px;
+        opacity: 0.5;
+      }
+
+      span {
+        b {
+          display: block;
+        }
+      }
+
+      .num-icon {
+        width: 35px;
+        height: 35px;
+        border-radius: $border-radius;
+        margin-right: 10px;
+        background: $body-bg;
+        color: $body-color;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &.disabled:hover {
+        background: transparent;
+      }
+
+      &:hover {
+        display: flex;
+      }
+    }
+
+    > ul > li:last-child a:after {
+      visibility: hidden;
+    }
+
+    .disabled a {
+      background: transparent;
+    }
+
+    .current {
+      a {
+        background: transparent;
+        color: inherit;
+
+        .num-icon {
+          background: $primary;
+          color: #fff;
+        }
+      }
+    }
+
+    .done a {
+      background: transparent;
+
+      .num-icon {
+        background: transparentize($primary, 0.8);
+        color: $primary;
+      }
+
+      span {
+        color: $body-color;
+      }
+    }
+  }
+
+  > .content {
+    margin: 0;
+    border-radius: 0;
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+  }
+
+  > .actions {
+    padding: 15px 25px 10px;
+  }
+
+  &.vertical {
+    > .actions,
+    > .content {
+      margin: 0;
+      background: lighten($body-bg, 2%);
+      width: 70%;
+      border-left: 1px solid $border-color;
+    }
+
+    > .content {
+      padding: 25px 25px 0;
+      border-radius: 0 $card-border-radius 0 0;
+    }
+
+    .actions {
+      padding: 25px;
+      border-radius: 0 0 $card-border-radius 0;
+    }
+
+    > .steps {
+      padding: 35px 10px;
+
+      a {
+        &:after {
+          content: "";
+          right: 10px;
+        }
+      }
+
+      > ul > li:last-child a:after {
+        visibility: visible;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    > .steps a:after {
+      right: 15px;
+    }
+
+    > .steps > ul > li:last-child a:after {
+      visibility: visible;
+    }
+
+    &.vertical {
+      > .steps {
+        padding: 0;
+      }
+
+      > .content {
+        padding: 0;
+      }
+
+      > .actions,
+      > .content {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.pc-tab-control.wizard {
+  .number {
+    display: none;
+  }
+
+  > .steps {
+    a {
+      display: flex;
+      align-items: center;
+      margin: 0.5em 0.5em 0;
+      padding: 1em 1.6em;
+      border-radius: $card-border-radius $card-border-radius 0 0;
+      position: relative;
+      background: rgba(255, 255, 255, 0.4);
+
+      span {
+        color: $body-color;
+
+        b {
+          display: block;
+        }
+      }
+
+      .num-icon {
+        width: 35px;
+        height: 35px;
+        border-radius: $border-radius;
+        margin-right: 10px;
+        background: $body-bg;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        .material-icons-two-tone {
+          background-color: $body-color;
+        }
+      }
+
+      &.disabled:hover {
+        background: transparent;
+      }
+
+      &:hover {
+        display: flex;
+      }
+    }
+
+    .done a:active,
+    .done a:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    > ul {
+      > li:last-child {
+        a {
+          margin-right: 0;
+        }
+      }
+
+      > li:first-child {
+        a {
+          margin-left: 0;
+        }
+      }
+    }
+
+    > ul > li:last-child a:after {
+      visibility: hidden;
+    }
+
+    .disabled a {
+      background: transparent;
+    }
+
+    .current {
+      a {
+        background: #fff;
+        color: inherit;
+
+        .num-icon {
+          background: $primary;
+          color: #fff;
+
+          .material-icons-two-tone {
+            background-color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  > .content {
+    margin: 0;
+    border-radius: 0 0 $card-border-radius $card-border-radius;
+    background: $card-bg;
+    box-shadow: $card-shadow;
+    margin-bottom: 30px;
+  }
+
+  > .actions {
+    padding: 15px 25px 10px;
+  }
+
+  @media (max-width: 768px) {
+    > .steps a {
+      margin: 0;
+      border-radius: $card-border-radius;
+    }
+  }
+}
+
+.wizard-step {
+  .error {
+    color: $danger;
+  }
+}
+
+.progress {
+  height: 6px;
+  .ui-progressbar-value {
+    background-image: linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.15) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.15) 50%,
+      rgba(255, 255, 255, 0.15) 75%,
+      transparent 75%,
+      transparent
+    );
+    background-size: 6px 6px;
+    background-color: $primary;
+    animation: 1s linear infinite progress-bar-stripes;
+  }
+}
+
+// =======================================================================
+.step-app > {
+  .step-steps {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    overflow: hidden;
+
+    > li {
+      list-style: none;
+      flex: 1;
+      cursor: pointer;
+      display: block;
+      padding: 20px 25px;
+      background: $body-bg;
+      color: $body-color;
+      text-decoration: none;
+      border-radius: $border-radius;
+
+      + li {
+        margin-left: 15px;
+      }
+
+      &:hover {
+        background-color: shift-color($primary, $soft-bg-level);
+        color: $primary;
+      }
+
+      &.active {
+        background-color: $primary;
+        color: #fff;
+      }
+
+      &.error {
+        background-color: shift-color($danger, $soft-bg-level);
+        color: $danger;
+      }
+
+      &.done {
+        background-color: shift-color($primary, $soft-bg-level);
+        color: $primary;
+      }
+
+      > .number {
+        background: #fff;
+        padding: 0 8px;
+        display: inline-block;
+        text-align: center;
+        margin-right: 15px;
+        border-radius: 3px;
+        color: #333;
+      }
+    }
+  }
+
+  .step-content {
+    padding: 20px 25px;
+    background: lighten($body-bg, 1.5%);
+    border-radius: $border-radius;
+    margin-top: 15px;
+
+    > .step-tab-panel {
+      display: none;
+
+      &.active {
+        display: block;
+      }
+    }
+  }
+
+  .step-footer {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+}
+
+// =======================================================================
+// =======================================================================

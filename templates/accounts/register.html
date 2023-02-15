@@ -1,0 +1,110 @@
+{% extends "layouts/base-fullscreen.html" %}
+
+{% block title %} Register {% endblock %}
+
+{% block stylesheets %}
+
+<link rel="stylesheet" href="{{ config.ASSETS_ROOT }}/css/process.css">
+
+{% endblock stylesheets %}
+
+{% block content %}   
+
+<div class="auth-wrapper">
+
+    <div class="auth-content subscribe">
+        <div class="card">
+            <div class="row no-gutters">
+                <div class="col-md-4 col-lg-6 d-none d-md-flex d-lg-flex theme-bg align-items-center justify-content-center">
+                    <img src="{{ config.ASSETS_ROOT }}/images/user/user.png" alt="lock images" class="img-fluid">
+                </div>
+                <div class="col-md-8 col-lg-6">
+                    <div class="card-body text-center">
+                        <div class="row justify-content-center">
+                            <div class="col-sm-10">
+
+                                <h3 class="mb-4">Sign UP</h3>
+
+                                <span class="mb-1 text-muted">
+                                    {% if msg %}
+                                        <span class="text-danger">{{ msg | safe }}</span>
+                                    {% else %}
+                                        Add your credentials
+                                    {% endif %} 
+                                </span>
+                                
+                                <br /><br />
+
+                                {% if not success %}
+
+                                    <form role="form" method="post" action="">
+
+                                        {{ form.hidden_tag() }}                    
+                
+                                        <div class="input-group mb-3">
+                                            {{ form.username(placeholder="Username", class="form-control") }}
+                                        </div>
+                                        
+                                        <div class="input-group mb-3">
+                                            {{ form.email(placeholder="Email", class="input form-control", type="email") }}
+                                        </div>
+                
+                                        <div class="input-group">
+                                            {{ form.password(placeholder="Password", class="form-control", type="password") }}
+                                            <button class="btn btn-outline-success show-pass-btn" type="button" id="button-addon2">    
+                                                <i id="show-pass-icon" class="feather icon-eye m-0"></i>
+                                            </button>
+                                        </div>
+                                        <div class="process d-none rounded-1">
+                                            <div class="process-val rounded-1"></div>
+                                        </div>
+                                        <div class="mb-4"></div>
+                                        <div class="input-group mb-4">
+                                            {{ form.password_check(placeholder="Password check", class="form-control", type="password") }}
+                                            <button class="btn btn-outline-success copy-pass-btn" type="button" id="button-addon2">
+                                                <i class="feather icon-copy m-0"></i>
+                                            </button>
+                                        </div>
+                                        <div class="form-group text-left">
+                                            <div class="checkbox checkbox-fill d-inline">
+                                                <input type="checkbox" name="checkbox-fill-1" id="checkbox-fill-a1" checked="">
+                                                <label for="checkbox-fill-a1" class="cr"> Agree with <a href="#">terms</a></label>
+                                            </div>
+                                        </div>
+                                        <button type="submit" name="register" class="btn btn-primary shadow-2 mb-4">Register</button>
+                
+                                    </form>
+
+                                    <p class="mb-1 text-muted">Already have an account? <a href="{{ url_for('authentication_blueprint.login') }}" >Login</a></p>
+
+                                {% else %}
+
+                                    <p class="mb-1 text-muted">
+                                        <a class="btn btn-primary shadow-2 mb-4" href="{{ url_for('authentication_blueprint.login') }}" >Sign IN</a>
+                                    </p>
+
+                                {% endif %} 
+                                
+                                <br />
+
+                                <p class="mb-2 text-muted">
+                                    &copy; CodedThemes - Coded by  
+                                    - <a target="_blank" 
+                                         href="https://appseed.us/product/datta-able-pro/flask/">AppSeed</a>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>     
+
+</div> 
+
+{% endblock content %}
+
+{% block javascripts %}
+
+<script src="{{ config.ASSETS_ROOT }}/js/processbar.js"></script>
+{% endblock javascripts %}

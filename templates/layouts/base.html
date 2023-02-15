@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+	<title>
+        {% block title %}{% endblock %} | JaneTech
+    </title>
+
+    <!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 11]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="author" content="Codedthemes" />
+
+    <!-- Favicon icon -->
+    <link rel="icon" href="{{ config.ASSETS_ROOT }}/images/favicon.png" type="image/x-icon">
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="{{ config.ASSETS_ROOT }}/fonts/fontawesome/css/fontawesome-all.min.css">
+    <!-- animation css -->
+    <link rel="stylesheet" href="{{ config.ASSETS_ROOT }}/css/plugins/animate.min.css">
+	<link rel="stylesheet" href="{{ config.ASSETS_ROOT }}/css/plugins/perfect-scrollbar.css">
+
+    <!-- vendor css -->
+    <link rel="stylesheet" href="{{ config.ASSETS_ROOT }}/css/style.min.css">
+
+    <!-- new css for changes-->
+    <link rel="stylesheet" href="{{ config.ASSETS_ROOT }}/css/new-style.css">
+
+    <!-- for delete  -->
+    <link rel="stylesheet" href="{{ config.ASSETS_ROOT }}/css/plugins/style.css">
+
+
+    <link rel="stylesheet" href="{{ config.ASSETS_ROOT }}/css/plugins/dataTables.bootstrap5.min.css">
+
+    <!-- Specific CSS goes HERE -->
+    {% block stylesheets %}{% endblock stylesheets %}
+
+</head>
+<body class="">
+
+	<!-- [ Pre-loader ] start -->
+	<div class="loader-bg">
+		<div class="loader-track">
+			<div class="loader-fill"></div>
+		</div>
+	</div>
+	<!-- [ Pre-loader ] End -->
+    
+    {% block sidebar %}{% endblock sidebar %}
+
+	{% include 'includes/navigation.html' %}	
+
+	{% include 'includes/header-user-list.html' %}
+
+	{% include 'includes/header-chat.html' %}
+
+	{% block content %}{% endblock content %}
+
+	{% include 'includes/scripts.html' %}
+
+    <!-- Specific Page JS goes HERE  -->
+    {% block javascripts %}{% endblock javascripts %}
+
+</body>
+</html>

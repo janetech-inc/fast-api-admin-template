@@ -1,0 +1,33 @@
+/**  =====================
+      Breadcrumbs & Pagination css start
+==========================  **/
+/* Breadcrumbs */
+
+.breadcrumb {
+    background-color: transparent;
+    border-radius:0;
+}
+
+.breadcrumb-item {
+    + .breadcrumb-item {
+        color: $primary-color;
+        &::before {
+            /* content: $breadcrumb-divider; */
+        }
+    }
+
+    &.active {
+        color: $theme-heading-color;
+    }
+}
+
+/* pagination */
+
+.page-item {
+    &.active .page-link {
+        color: #fff;
+        background-color: $primary-color;
+        border-color: $primary-color;
+    }
+}
+/**====== Breadcrumbs & Pagination css end ======**/

@@ -1,0 +1,61 @@
+repos:
+  # EOF new line fixer
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.5.0 # Use the ref you want to point at
+    hooks:
+      - id: end-of-file-fixer
+        exclude: ^(populations_inference/)
+      - id: check-json
+        exclude: ^(tests/assets/|populations_inference/)
+      - id: pretty-format-json
+        args:
+          - --autofix
+        exclude: ^(tests/assets/|populations_inference/)
+
+  # Sort imports
+  - repo: https://github.com/pycqa/isort
+    rev: 5.10.1
+    hooks:
+      - id: isort
+        exclude: ^(populations_inference/)
+        name: isort (python)
+        language_version: python3.8
+
+  # Black python code formatter
+  - repo: https://github.com/ambv/black
+    rev: 22.6.0
+    hooks:
+      - id: black
+        exclude: ^(populations_inference/)
+        language_version: python3.8
+        args: ["--line-length", "100"]
+
+  # Flake8 style check
+  - repo: https://gitlab.com/pycqa/flake8
+    rev: 3.8.1
+    hooks:
+      - id: flake8
+        language_version: python3.8
+        exclude: ^(pubmed_extractor/core/abbreviation.py|populations_inference/)
+        args: ["--ignore=E501,W503"]
+
+  # Vulture
+  - repo: https://github.com/jendrikseipp/vulture
+    rev: "v2.3"
+    hooks:
+      - id: vulture
+        exclude: ^(populations_inference/)
+        args:
+          - .
+          - vulture_whitelist.py
+
+  # Pydocstyle
+  - repo: https://github.com/PyCQA/pydocstyle
+    rev: 5.0.2
+    hooks:
+      - id: pydocstyle
+        language_version: python3.8
+        exclude: ^(tests|constants.py|pubmed_extractor/core/abbreviation.py|.*\__init__.py|populations_inference/)
+        args:
+          - --convention=numpy
+          - --add-ignore=D202,D203

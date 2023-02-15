@@ -1,0 +1,37 @@
+@import "../mixins/alert"; 
+/**  =====================
+      Alert css start
+==========================  **/
+
+/* Base styles */
+
+.alert {
+    position: relative;
+    padding: 15px 20px;
+    border-radius: 0;
+}
+/* Provide class for links that match alerts */
+
+.alert-link {
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    &:hover{
+        text-decoration: underline;
+    }
+}
+
+.alert-dismissible {
+    padding-right: 40px;
+    .close {
+        padding: 14px 10px;
+    }
+}
+/* Alternate styles
+ Generate contextual modifier classes for colorizing the alert. */
+ 
+@each $color, $value in $theme-colors {
+    .alert-#{$color} {
+        @include alert-variant(theme-color-level($color, $alert-bg-level), theme-color-level($color, $alert-border-level), theme-color-level($color, $alert-color-level));
+    }
+}
+/**====== Alert css end ======**/

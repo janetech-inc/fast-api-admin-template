@@ -1,0 +1,101 @@
+[ui-pnotify] {
+    &.ui-pnotify .brighttheme {
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+
+        &.ui-pnotify-container {
+            padding: 1.3rem;
+        }
+    }
+
+    &.ui-pnotify-with-icon .brighttheme {
+        .ui-pnotify-confirm,
+        .ui-pnotify-text,
+        .ui-pnotify-title {
+            margin-left: 1.8rem;
+        }
+    }
+}
+
+[dir=rtl] [ui-pnotify].ui-pnotify-with-icon .brighttheme {
+    .ui-pnotify-confirm,
+    .ui-pnotify-text,
+    .ui-pnotify-title {
+        margin-right: 1.8rem;
+        margin-left: 0;
+    }
+}
+
+[ui-pnotify].ui-pnotify {
+    .brighttheme-icon-notice {
+        &:after {
+            content: "!";
+        }
+    }
+
+    .brighttheme-icon-info {
+        &:after {
+            content: "i";
+        }
+    }
+
+    .brighttheme-icon-success {
+        &:after {
+            content: "\002713";
+        }
+    }
+
+    .brighttheme-icon-error {
+        &:after {
+            content: "!";
+        }
+    }
+
+    .brighttheme-icon-closer:after {
+        content: "\002715";
+    }
+
+    .brighttheme-icon-sticker {
+        &:after {
+            top: -1px;
+            content: "\002016";
+        }
+
+        &.brighttheme-icon-stuck:after {
+            content: "\00003E";
+        }
+    }
+}
+
+[data-pnotify].custom-elem {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    line-height: 1.1;
+}
+
+[data-pnotify] .custom-container {
+    background-color: #404040;
+    background-image: none;
+    border: none;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 15px;
+}
+
+[data-pnotify] .custom-title,
+[data-pnotify] .custom-text {
+    margin-left: 50px;
+    color: #FFF;
+}
+
+[data-pnotify] .custom-title {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+[data-pnotify] .custom-icon {
+    color: #FFA;
+}

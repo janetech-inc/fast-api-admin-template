@@ -1,0 +1,69 @@
+/**  =====================
+      Toolbar css start
+==========================  **/
+.tool-bottom,
+.tool-top {
+    .tool-item {
+        &:first-child {
+            border-top-left-radius: 6px;
+            border-bottom-left-radius: 6px;
+        }
+
+        &:last-child {
+            border-top-right-radius: 6px;
+            border-bottom-right-radius: 6px;
+        }
+    }
+}
+
+.tool-left,
+.tool-left {
+    .tool-item {
+        &:first-child {
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+
+        &:last-child {
+            border-bottom-left-radius: 6px;
+            border-bottom-right-radius: 6px;
+        }
+    }
+}
+$toolbar-name: primary, warning, light, danger, success, dark, info;
+$toolbar-color: $primary-color, $warning-color, $default-color, $danger-color, $success-color, $inverse-color, $info-color;
+@each $var in $toolbar-name {
+    $i: index($toolbar-name, $var);
+
+    .toolbar-#{$var} {
+        .tool-item {
+            background: nth($toolbar-color, $i);
+
+            &.selected,
+            &:hover {
+                background: darken(nth($toolbar-color, $i), 10%);
+            }
+        }
+
+        &.tool-top .arrow {
+            border-color: nth($toolbar-color, $i) transparent transparent;
+        }
+
+        &.tool-bottom .arrow {
+            border-color: transparent transparent nth($toolbar-color, $i);
+        }
+
+        &.tool-left .arrow {
+            border-color: transparent transparent transparent nth($toolbar-color, $i);
+        }
+
+        &.tool-right .arrow {
+            border-color: transparent nth($toolbar-color, $i) transparent transparent;
+        }
+    }
+
+    .btn-toolbar-#{$var}.pressed {
+        background-color: nth($toolbar-color, $i);
+    }
+}
+/**====== Toolbar css end ======**/

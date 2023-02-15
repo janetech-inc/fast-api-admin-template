@@ -1,0 +1,75 @@
+/* Button variants
+ Easily pump out default styles, as well as :hover, :focus, :active,
+ and disabled options for all buttons */
+@mixin button-variant($background, $border, $hover-background: darken($background, 7.5%), $hover-border: darken($border, 10%), $active-background: darken($background, 10%), $active-border: darken($border, 12.5%)) {
+    color: color-yiq($background);
+    background-color: $background;
+    border-color: $border;
+    
+    &:active,
+    &:focus,
+    &:hover {
+        color: color-yiq($hover-background);
+        background-color: $hover-background;
+        border-color: $hover-border;
+    }
+
+
+    &.disabled,
+    &:disabled {
+        color: color-yiq($background);
+        background-color: $background;
+        border-color: $border;
+    }
+
+    &:not(:disabled):not(.disabled).active,
+    &:not(:disabled):not(.disabled):active,
+    .show > &.dropdown-toggle {
+        color: color-yiq($active-background);
+        background-color: $active-background;
+        border-color: $active-border;
+    }
+}
+@mixin button-outline-variant($color, $color-hover: color-yiq($color), $active-background: $color, $active-border: $color) {
+    color: $color;
+    background-color: transparent;
+    background-image: none;
+    border-color: $color;
+
+    &:active,
+    &:focus,
+    &:hover {
+        color: color-yiq($color);
+        background-color: $active-background;
+        border-color: $active-border;
+    }
+
+    &.disable
+    &:disabled {
+        color: $color;
+        background-color: transparent;
+    }
+
+    &:not(:disabled):not(.disabled).active,
+    &:not(:disabled):not(.disabled):active,
+    .show > &.dropdown-toggle {
+        color: color-yiq($active-background);
+        background-color: $active-background;
+        border-color: $active-border;
+
+        &:focus {}
+    }
+}
+@mixin button-glow-variant($color, $color-hover: color-yiq($color), $active-background: $color, $active-border: $color) {
+    box-shadow: 0 1px 6px 2px transparentize($color,0.44), 0 6px 11px 2px transparentize($color,0.8);
+    &:hover{
+        box-shadow: 0 1px 4px 2px transparentize($color,0.44), 0 4px 9px 2px transparentize($color,0.9);
+    }
+    &:not(:disabled):not(.disabled).active,
+    &:not(:disabled):not(.disabled):active:focus,
+    .show > &.dropdown-toggle,
+    &.active,
+    &:focus{
+        box-shadow: none
+    }
+}

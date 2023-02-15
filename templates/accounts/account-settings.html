@@ -1,0 +1,589 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} {{ current_user.username}}'s Profile {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+
+{% endblock stylesheets %}
+
+{% block content %}
+
+<!-- [ Main Content ] start -->
+<div class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+        <div class="pcoded-content">
+            <div class="pcoded-inner-content">
+                <div class="main-body">
+                    <div class="page-wrapper">
+                        <!-- [ breadcrumb ] start -->
+                        <div class="page-header">
+                            <div class="page-block">
+                                <div class="row align-items-center">
+                                    <div class="col-md-12">
+                                        <div class="page-header-title">
+                                            <h5 class="m-b-10">User Profile</h5>
+                                        </div>
+                                        <ul class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="/"><i
+                                                        class="feather icon-home"></i></a></li>
+                                            <li class="breadcrumb-item"><a href="#!">User</a></li>
+                                            <li class="breadcrumb-item"><a href="#!">Profile</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- [ breadcrumb ] end -->
+                        <!-- [ Main Content ] start -->
+                        <div class="row">
+
+                            <!-- [ sample-page ] start -->
+                            <div class="col-lg-4">
+                                <div class="card user-card user-card-1">
+                                    <div class="card-body pb-0">
+                                        <div class="float-end">
+                                            <span class="badge badge-success">Pro</span>
+                                        </div>
+                                        <div class="media user-about-block align-items-center mt-0 mb-3">
+                                            <div class="position-relative d-inline-block">
+                                                <img class="img-radius img-fluid wid-80 imageshow profile_image"
+                                                    id="image-display" src="{{ config.ASSETS_ROOT }}{{context['profile_image']}}"
+                                                    alt="User image">
+                                                <div class="certificated-badge">
+                                                    <div class="new_Btn img-choose-icon">
+                                                        <i class="fas fa-certificate text-primary bg-icon"></i>
+                                                        <i class="fas fa-check front-icon text-white"></i>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="media-body ms-3">
+                                                <h6 class="mb-1">{{current_user.username}}</h6>
+                                                <p class="mb-0 text-muted">{{ context['profile_bio']}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <span class="f-w-500"><i class="feather icon-mail m-r-10"></i>Email</span>
+                                            <a href="mailto:{{current_user.email}}"
+                                                class="float-end text-body">
+                                                {% if current_user.email %}
+                                                    {{current_user.email}}
+                                                {% else %}
+                                                    Not Set
+                                                {% endif %}                                                 
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="f-w-500"><i
+                                                    class="feather icon-phone-call m-r-10"></i>Phone</span>
+                                            <a href="#" class="float-end text-body">{{ context['profile_phone']}}</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="f-w-500"><i
+                                                    class="feather icon-map-pin m-r-10"></i>Website</span>
+                                            <a href="#" class="float-end text-body">{{ context['profile_website']}}</a>
+                                        </li>                                        
+                                        <li class="list-group-item border-bottom-0">
+                                            <span class="f-w-500"><i
+                                                    class="feather icon-settings m-r-10"></i>API KEY</span>
+                                            <span class="float-end">{{ context['api_token']}}</span>
+                                        </li>                                        
+                                    </ul>
+                                    <div class="card-body">
+                                    </div>
+                                    <div class="nav flex-column nav-pills list-group list-group-flush list-pills"
+                                        id="user-set-tab" role="tablist" aria-orientation="vertical">
+
+                                        <a class="nav-link list-group-item list-group-item-action active"
+                                            id="user-set-profile-tab" data-bs-toggle="pill" href="#user-set-profile"
+                                            role="tab" aria-controls="user-set-profile" aria-selected="true">
+                                            <span class="f-w-500"><i class="feather icon-user m-r-10 h5 "></i>Basic Info</span>
+                                            <span class="float-end"><i class="feather icon-chevron-right"></i></span>
+                                        </a>
+
+                                        <a class="nav-link list-group-item list-group-item-action"
+                                            id="user-set-profile-tab" data-bs-toggle="pill" href="#api-explorer"
+                                            role="tab" aria-controls="user-set-profile" aria-selected="true">
+                                            <span class="f-w-500"><i class="feather icon-server m-r-10 h5 "></i>API Explorer</span>
+                                            <span class="float-end"><i class="feather icon-chevron-right"></i></span>
+                                        </a>                                        
+
+                                        {% if current_user.email %}    
+                                        <a class="nav-link list-group-item list-group-item-action"
+                                            id="user-set-passwort-tab" data-bs-toggle="pill" href="#user-set-password"
+                                            role="tab" aria-controls="user-set-passwort" aria-selected="false">
+                                            <span class="f-w-500"><i class="feather icon-shield m-r-10 h5 "></i>Change Password</span>
+                                            <span class="float-end"><i class="feather icon-chevron-right"></i></span>
+                                        </a>
+                                        {% endif %}
+                                        
+                                        <!-- delete acc -->
+                                        <a class="nav-link list-group-item list-group-item-action"
+                                            id="user-delete-account-tab" data-bs-toggle="pill" href="#user-delete-account"
+                                            role="tab" aria-controls="user-delete-account" aria-selected="false">
+                                            <span class="f-w-500">
+                                                <i class="feather icon-trash-2 m-r-10 h5 "></i>Delete Account</span>
+                                            <span class="float-end"><i class="feather icon-chevron-right"></i></span>
+                                        </a>
+                                    <!-- end -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+
+                                <div class="tab-content bg-transparent p-0 shadow-none" id="user-set-tabContent">
+                
+                                    <!-- TAB Content: Update User Info -->
+                                    <div class="tab-pane fade show active" id="user-set-profile" role="tabpanel"
+                                        aria-labelledby="user-set-profile-tab">
+
+                                        <form method="put" id="userEditForm" enctype=multipart/form-data>
+                                            <input type="hidden" id="user_id" value="{{current_user.id}}"
+                                                name="user_id">
+                                            <input id="imageid-btn" type='file' name="image" accept="image/*"
+                                                onchange="loadFile(event)" />
+                                            
+                                            {% if not current_user.email %}                                                
+                                                <div class="alert alert-danger alert-dismissible" role="alert">
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                        aria-label="Close">
+                                                    </button>
+                                                    <h5 class="alert-heading"><i class="feather icon-alert-circle me-2"></i>
+                                                        Email Verification</h5>
+                                                    <p class="mb-0">
+                                                        Please add an email address.
+                                                    </p>
+                                                </div>
+                                            {% endif %}        
+
+                                            <div class="card">
+
+                                                <div class="card-header">
+                                                    <h5>
+                                                        <i class="feather icon-user text-c-blue wid-20"></i>
+                                                        <span class="p-l-5">About me</span>
+                                                    </h5>
+                                                </div>
+
+                                                <div class="card-body">
+                                                    <h5 class="mt-2 mb-3">Basic Info</h5>
+
+                                                    <div class="row mt-2">
+                                                        <div class="col-sm-6">
+                                                            <label class="form-label">Full Name</label>
+                                                            <input type="text" id="full_name" name="full_name"
+                                                                class="form-control" placeholder="Full Name"
+                                                                value="{{context['profile_name']}}">
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <label class="form-label">Bio</label>
+                                                            <input type="text" id="bio" name="bio" class="form-control"
+                                                                placeholder="Bio" value="{{ context['profile_bio']}}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mt-2">
+                                                        <div class="col-sm-6">
+                                                            <label class="form-label {% if not current_user.email %} text-danger {% endif%}">Email</label>
+                                                            <input type="email" id="email" name="email" 
+                                                                   {% if current_user.email %} readonly {% endif %}
+                                                                class="form-control" placeholder="Email Address"
+                                                                value="{% if current_user.email %} {{ current_user.email }} {% endif %}">
+                                                            <section class="display-error-message">
+                                                            </section>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <label class="form-label">Phone</label>
+                                                            <input type="text" id="phone" name="phone"
+                                                                class="form-control" placeholder="Phone"
+                                                                value="{{ context['profile_phone']}}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mt-2">
+                                                        <div class="col-sm-6">
+                                                            <label class="form-label">Website</label>
+                                                            <input type="text" id="website" name="website"
+                                                                class="form-control" placeholder="Website"
+                                                                value="{{ context['profile_website'] }}">
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <label class="form-label">Zip Code</label>
+                                                            <input type="text" id="zipcode" name="zipcode"
+                                                                class="form-control" placeholder="Zip Code"
+                                                                value="{{ context['profile_zipcode']}}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mt-2">
+                                                        <div class="col-sm-12">
+                                                            <label class="form-label">Address</label>
+                                                            <input type="text" id="address" name="address"
+                                                                class="form-control"
+                                                                value="{{ context['profile_address']}}">
+                                                        </div>
+                                                    </div>
+
+                                                    <br>
+                                                    <button type="submit" class="btn  btn-primary">Save changes</button>
+
+                                                </div>
+
+                                            </div>
+
+                                        </form>
+
+                                    </div>
+
+                                    <!-- TAB Content: API Explorer -->
+                                    <div class="tab-pane fade" id="api-explorer" role="tabpanel"
+                                          aria-labelledby="user-set-passwort-tab">
+
+                                        <div class="card">
+
+                                            <div class="card-header">
+                                                <h5>
+                                                    <i class="feather icon-server text-c-blue wid-20"></i>
+                                                    <span class="p-l-5">API Explorer</span>
+                                                </h5>
+                                            </div>
+
+                                            <div class="card-body">
+
+                                                <!-- chnage password -->
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+
+                                                        <div class="card-body pt-0">
+
+                                                            <div class="row">
+
+                                                                <h6 class="mt-1">
+                                                                    Access the API interface using the <a target="_blank" href="/api/">Swagger UI</a> 
+                                                                    or using 3rd party tools like <strong>POSTMAN</strong> 
+                                                                    (sample IO <a target="_blank" href="https://github.com/app-generator/flask-datta-able-pro/blob/master/media/api-sample.postman_collection" download>collection</a>).  
+                                                                </h6>
+                                                                <p class="text-muted mb-2">
+                                                                    <strong>Note:</strong> Save the API_KEY associated with your account in all requests header (Authorization field). 
+                                                                </p>
+
+                                                            </div>
+
+                                                            <br />
+                                                            <div class="row">
+
+                                                                <h6 class="mt-1">
+                                                                    <i class="feather icon-grid text-c-green wid-20"></i>
+                                                                    <strong>Products</strong> - see <a target="_blank" href="/api/products/">all products</a>
+                                                                </h6>
+                                                                <p class="text-muted mb-2">
+                                                                    <strong>Class definition: </strong> 
+                                                                </p> 
+                                                                <ul class="text-muted ps-4 mb-0 float-start">
+                                                                    <li>
+                                                                        <span class="text-sm">
+                                                                            ID
+                                                                        </span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <span class="text-sm">
+                                                                            name
+                                                                        </span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <span class="text-sm">
+                                                                            description
+                                                                        </span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <span class="text-sm">
+                                                                            price    
+                                                                        </span>
+                                                                    </li>                                                                
+                                                                    <li>
+                                                                        <span class="text-sm">
+                                                                            currency    
+                                                                        </span>
+                                                                    </li>
+                                                                </ul>
+
+                                                            </div>
+
+                                                            <br />
+                                                            <div class="row">                                                            
+
+                                                                <br />
+                                                                <h6 class="mt-1">
+                                                                    <i class="feather icon-grid text-c-green wid-20"></i>
+                                                                    <strong>Sales</strong> - see <a target="_blank" href="/api/sales/">all sales</a>
+                                                                </h6>
+                                                                <p class="text-muted mb-2">
+                                                                    <strong>Class definition: </strong> 
+                                                                </p>
+                                                                <ul class="text-muted ps-4 mb-0 float-start">
+                                                                    <li>
+                                                                        <span class="text-sm">
+                                                                            ID
+                                                                        </span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <span class="text-sm">
+                                                                            product_id
+                                                                        </span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <span class="text-sm">
+                                                                            state
+                                                                        </span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <span class="text-sm">
+                                                                            value    
+                                                                        </span>
+                                                                    </li>            
+                                                                    <li>
+                                                                        <span class="text-sm">
+                                                                            fee    
+                                                                        </span>
+                                                                    </li>                                                                                                                    
+                                                                    <li>
+                                                                        <span class="text-sm">
+                                                                            currency    
+                                                                        </span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <span class="text-sm">
+                                                                            client    
+                                                                        </span>
+                                                                    </li>                                                                
+                                                                </ul>
+                                                            
+                                                            </div>                                                                
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        
+                                    </div>
+
+                                    <!-- TAB Content: Update Password -->
+                                    <div class="tab-pane fade" id="user-set-password" role="tabpanel"
+                                        aria-labelledby="user-set-passwort-tab">
+
+                                        <div class="card">
+
+                                            <div class="card-header">
+                                                <h5>
+                                                    <i class="feather icon-shield text-c-blue wid-20"></i>
+                                                    <span class="p-l-5">Change Password</span>
+                                                </h5>
+                                            </div>
+
+                                            <div class="card-body">
+
+                                                <!-- chnage password -->
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+
+                                                        <!-- Change Password -->
+                                                        <form id="changePassForm" method="post">
+                                                            <div class="card-body pt-0">
+
+                                                                <label class="form-label">New password</label>
+                                                                <div class="form-group">
+                                                                    <input class="form-control" id="id_password1"
+                                                                        name="new_password" type="password"
+                                                                        placeholder="New password" required>
+                                                                </div>
+                                                                <label class="form-label">Confirm new password</label>
+                                                                <div class="form-group">
+                                                                    <input class="form-control" id="id_password2"
+                                                                        name="new_password2" type="password"
+                                                                        placeholder="Confirm password" required>
+                                                                </div>
+                                                                <h5 class="mt-5">Password requirements</h5>
+                                                                <p class="text-muted mb-2">
+                                                                    Please follow this guide for a strong password:
+                                                                </p>
+                                                                <ul class="text-muted ps-4 mb-0 float-start">
+                                                                    <li>
+                                                                        <span class="text-sm">One special
+                                                                            characters</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <span class="text-sm">Min 6 characters</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <span class="text-sm">One number (2 are
+                                                                            recommended)</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <span class="text-sm">Change it often</span>
+                                                                    </li>
+                                                                </ul>
+                                                                <button type="submit"
+                                                                    class="btn btn-primary shadow-2 mb-4 bg-gradient-dark btn-sm float-end mt-6 mb-0">Update
+                                                                    password</button>
+                                                            </div>
+                                                        </form>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <!-- TAB Content: Delete account -->
+                                    <div class="tab-pane fade" id="user-delete-account" role="tabpanel"
+                                         aria-labelledby="user-delete-account-tab">
+
+                                        <div class="card mt-4" id="delete">
+
+                                            <div class="card-header">
+                                                <h5>
+                                                    <i class="feather icon-trash-2 text-c-blue wid-20"></i>
+                                                    <span class="p-l-5">Delete Account</span>
+                                                </h5>
+                                                <p class="text-sm mb-0">
+                                                    Once you delete your account, there is no going back.
+                                                    Please be certain.
+                                                </p>
+                                            </div>
+
+                                            <div class="card-body d-sm-flex pt-0 mt-3">
+                                                <div class="d-flex align-items-center mb-sm-0 mb-4">
+                                                    <div>
+                                                        <div class="form-check form-switch mb-0">
+                                                            <input class="form-check-input deleteConfirm" type="checkbox"
+                                                                id="flexSwitchCheckDefault0">
+                                                        </div>
+                                                    </div>
+                                                    <div class="ms-2">
+                                                        <span class="text-dark font-weight-bold d-block text-sm">Confirm</span>
+                                                        <span class="text-xs d-block">I want to delete my account.</span>
+                                                    </div>
+                                                </div>
+                                                <button class="btn btn-danger mb-0 ms-auto" id="deleteBtn" type="button"
+                                                    name="button" onClick="deleteUser({{current_user.id}})"
+                                                    href="javascript:;">Delete Account</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                            </div>
+                            <!-- [ sample-page ] end -->
+
+                        </div>
+
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- [ Main Content ] end -->
+
+    {% endblock content %}
+
+    <!-- Specific Page JS goes HERE  -->
+    {% block javascripts %}
+    <script>
+
+        // edit user
+        $('#userEditForm').on('submit', function (e) {
+        
+            var formData = new FormData($("#userEditForm")[0]);
+            var files = $('#imageid-btn')[0].files;
+            // Check file selected or not
+            if (files.length > 0) {
+                formData.append('imageid-btn', files[0]);
+            }
+
+            e.preventDefault();
+            $.ajax({
+                type: 'PUT',
+                url: "{{ url_for('authentication_blueprint.edit_user') }}",
+                data: formData,
+                async: false,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (res) {
+                    Swal.fire( {icon: 'success',text: res['message']}).then(() => {
+                        location.reload();
+                    });
+                },
+                error: function (request, error) {
+                    Swal.fire( {icon: 'error',text: JSON.parse(request.responseText)['error']})
+                }
+            });
+
+        });
+
+        // change password
+        $('#changePassForm').on('submit', function (e) {
+
+            var formData = new FormData($("#changePassForm")[0]);
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: "{{ url_for('authentication_blueprint.change_password') }}",
+                data: formData,
+                async: false,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (res) {
+                    Swal.fire( {icon: 'success',text: res['message']}).then(() => {
+                        location.reload();
+                    });
+                },
+                error: function (request, error) {
+                    Swal.fire( {icon: 'error',text: JSON.parse(request.responseText)['error']})
+                }
+            });
+
+        });
+
+        $("#deleteBtn").attr('disabled', 'disabled');
+
+        $(".deleteConfirm").on('click', function () {
+            if (this.checked) {
+                $("#deleteBtn").removeAttr('disabled');
+            } else {
+                $("#deleteBtn").attr('disabled', 'disabled');
+            }
+        });
+        // Delete Django Ajax Call swal
+        function deleteUser(id) {
+            if ($('.deleteConfirm').prop('checked') == true) {
+                $.ajax({
+                    type: "DELETE",
+                    url: "{{ url_for('authentication_blueprint.delete_user') }}",
+                    data: { 'user_id': id },
+                    dataType: 'json',
+                    success: function (res) {
+                        Swal.fire( {icon: 'success',text: res['message']}).then(() => {
+                        window.location.replace('/');
+                    });
+                    }
+                });
+            }
+        }
+        $('.new_Btn').click(function () {
+            $('#imageid-btn').click();
+        })
+    </script>
+
+
+    {% endblock javascripts %}

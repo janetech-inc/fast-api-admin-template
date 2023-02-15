@@ -1,0 +1,284 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} User Dashboard {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+
+<!-- Sidebar -->
+{% block sidebar %}
+{% include 'admin/includes/sidebar.html' %}
+{% endblock sidebar %}
+
+
+{% block content %}
+
+<!-- [ Main Content ] start -->
+<div class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+        <div class="pcoded-content">
+            <div class="pcoded-inner-content">
+                <!-- [ breadcrumb ] start -->
+                <div class="page-header">
+                    <div class="page-block">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="page-header-title">
+
+                                    <h5 class="m-b-10">
+                                        <i class="fab fa-circle f-24"></i>
+                                        {{model_cls}}
+                                    </h5>
+                                </div>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                                    <li class="breadcrumb-item"><a href="#!">List</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- [ breadcrumb ] end -->
+                <div class="main-body">
+                    <div class="page-wrapper">
+                        <!-- [ Main Content ] start -->
+                        <div class="row">
+
+
+
+
+
+
+                            <!-- Zero config table start -->
+
+                            <div class="col-sm-12">
+
+                                <ul class="nav nav-tabs" id="myTab1" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="user-tab" data-bs-toggle="tab" href="#contacts"
+                                            role="tab">Items</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="designer-tab" data-bs-toggle="tab" href="#followers"
+                                            role="tab">Active</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="Developer-tab" data-bs-toggle="tab" href="#unfollowers"
+                                            role="tab">Inactive</a>
+                                    </li>
+                                </ul>
+
+
+                                <div class="tab-content" id="myTabContent1">
+
+
+
+                                    <div class="tab-pane dt-responsive table-responsive active" id="contacts"
+                                        role="tabpanel">
+                                        <div>
+                                            <h5>Items</h5>
+                                            <small>Added on of Jan 24, 2023. </small>
+                                        </div>
+
+                                        <table id="simpletable" class="simpletable table nowrap">
+
+                                         
+                                            <thead style='display:none;'>
+                                                <tr>
+
+                                                    <th>Name</th>
+                                                    <th>A Field</th>
+                                                    <th>Description</th>
+                                                    <th>Another Field</th>
+                                                    <th>Date </th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+
+                                                {% for object in objects.elements %}
+                                                <tr class="unread">
+
+                                                    <td>
+                                                        <h6 class="mb-1">{{object.name}}
+                                                        </h6>
+
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="mb-1">
+                                                            {{object.a_field}}</h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="mb-1">
+                                                            {{object.description}}</h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="mb-1">
+                                                            {{object.another_field}}</h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="text-muted"><i
+                                                                class="fas fa-circle text-c-green f-10 m-r-15"></i>11
+                                                            MAY 12:56</h6>
+                                                    </td>
+
+                                                </tr>
+                                                {% endfor %}
+
+
+
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+
+                                    <div class="tab-pane dt-responsive table-responsive" id="followers" role="tabpanel">
+                                        <div>
+                                            <h5>Active</h5>
+                                            <small>As of Jan 24, 2023. </small>
+                                        </div>
+                                        <table id="simpletable2" class="simpletable table nowrap">
+
+
+                                            <thead style='display:none;'>
+                                                <tr>
+
+                                                    <th>Name</th>
+                                                    <th>A Field</th>
+                                                    <th>Another Field</th>
+                                                    <th>Date </th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+
+                                                {% for object in objects %}
+                                                <tr class="unread">
+
+                                                    <td>
+                                                        <h6 class="mb-1">{{object.name}}
+                                                        </h6>
+
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="mb-1">
+                                                            {{object.a_field}}</h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="mb-1">
+                                                            {{object.another_field}}</h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="text-muted"><i
+                                                                class="fas fa-circle text-c-green f-10 m-r-15"></i>11
+                                                            MAY 12:56</h6>
+                                                    </td>
+
+                                                </tr>
+                                                {% endfor %}
+
+
+
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+                                    <!-- [ Inactive ] start -->
+
+                                    <div class="tab-pane dt-responsive table-responsive" id="unfollowers"
+                                        role="tabpanel">
+                                        <div>
+                                            <h5>Inactive</h5>
+                                            <small>As of Jan 24, 2023. </small>
+                                        </div>
+
+                                        <table id="simpletable2" class="simpletable table nowrap">
+
+
+                                            <thead style='display:none;'>
+                                                <tr>
+
+                                                    <th>Name</th>
+                                                    <th>A Field</th>
+                                                    <th>Another Field</th>
+                                                    <th>Date </th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+
+                                                {% for object in objects %}
+                                                <tr class="unread">
+
+                                                    <td>
+                                                        <h6 class="mb-1">{{object.name}}
+                                                        </h6>
+
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="mb-1">
+                                                            {{object.a_field}}</h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="mb-1">
+                                                            {{object.another_field}}</h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="text-muted"><i
+                                                                class="fas fa-circle text-c-green f-10 m-r-15"></i>11
+                                                            MAY 12:56</h6>
+                                                    </td>
+
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+
+                                    <!-- [ Unfollows ] end -->
+
+
+
+                                    <!-- Zero config table end -->
+
+
+                                </div>
+                                <!-- [ Main Content ] end -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+
+        {% endblock content %}
+
+        <!-- Specific Page JS goes HERE  -->
+        {% block javascripts %}
+
+
+        <!-- datatable Js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="{{ config.ASSETS_ROOT }}/js/plugins/jquery.dataTables.min.js"></script>
+        <script src="{{ config.ASSETS_ROOT }}/js/plugins/dataTables.bootstrap5.min.js"></script>
+        <script>
+
+
+            // [ Alternative Pagination ]
+            $('.simpletable').DataTable({
+                lengthChange: false,
+                language: {
+                    info: "Page _PAGE_ of _PAGES_"
+                }
+            });
+
+
+        </script>
+
+        {% endblock javascripts %}

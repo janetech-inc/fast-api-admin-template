@@ -1,0 +1,9 @@
+fastapi
+mangum
+pytest
+uvicorn
+jinja2
+pydantic
+requests
+fastapi_permissions
+rich

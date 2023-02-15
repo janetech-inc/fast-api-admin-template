@@ -1,0 +1,407 @@
+/**  =====================
+      Authentication css start
+==========================  **/
+.auth-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    min-width: 100%;
+    min-height: 100vh;
+
+    a,
+    p>a {
+        color: $theme-heading-color;
+        font-weight: 600;
+    }
+
+    .btn-auth-gen {
+        .btn-icon {
+            width: 140px;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 45px;
+
+            small {
+                font-size: 15px;
+            }
+        }
+    }
+
+    .btn-check:checked+.btn-outline-secondary {
+        background: $theme-color2;
+    }
+
+    .input-group {
+        background: transparent;
+    }
+
+    .card {
+        margin-bottom: 0;
+    }
+
+    >div {
+        z-index: 5;
+    }
+
+    .auth-content {
+        position: relative;
+        width: 390px;
+        padding: 15px;
+        z-index: 5;
+
+        &.multyform,
+        &.subscribe {
+            width: 750px;
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        max-width: 360px;
+
+    }
+
+    @media only screen and (max-width: 575px) {
+        .card {
+            .card-body {
+                padding: 30px 15px;
+            }
+        }
+    }
+
+    .auth-icon {
+        font-size: 30px;
+
+        &:before {
+            background: $theme-color;
+            background-clip: text;
+            text-fill-color: transparent;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+
+    &.offline {
+        background: radial-gradient(#94acbe, #253653);
+        .offline-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+
+            > svg {
+                width: 100%;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+            }
+
+            .boat-img {
+                animation: boatanim 12s ease-in-out infinite;
+            }
+        }
+
+        .s-img-1,
+        .s-img-2 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .s-img-1 {
+            animation: sparcle 3.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+        }
+
+        .s-img-2 {
+            animation: sparcle 3.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+            animation-delay: 1.19s;
+        }
+        .moon {
+            background: rgba(255, 255, 255, 0.4);
+            position: absolute;
+            top: 12%;
+            left: 40%;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+
+            &:after,
+            &:before {
+                content: "";
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                box-shadow: inset 0 0 20px 5px rgba(255, 255, 255, 0.4);
+            }
+
+            &:after {
+                animation: sunwawe 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+            }
+
+            &:before {
+                animation: sunwawe 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+                animation-delay: 1.15s;
+            }
+        }
+
+        .sark {
+            .img-sark {
+                width: 300px;
+                position: absolute;
+                right: -200px;
+                animation: sark 12s ease-in-out infinite;
+            }
+            .bubble{
+                background: rgba(255, 255, 255, 0.0);
+                position: absolute;
+                top: 12%;
+                left: 60%;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                animation: bubble 12s ease-in-out infinite;
+                &:after,
+                &:before {
+                    content: "";
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    box-shadow: inset 0 0 20px 5px rgba(255, 255, 255, 0.4);
+                }
+                &:after {
+                    animation: sunwawe 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+                }
+                &:before {
+                    animation: sunwawe 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+                    animation-delay: 1.15s;
+                }
+            }
+        }
+
+        .off-main {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+
+            .off-content {
+                position: absolute;
+                width: 100%;
+                bottom: 5%;
+                left: 0;
+                z-index: 5;
+            }
+        }
+        @media only screen and (max-width: 575px) {
+            .sark{
+                display: none;
+            }
+            .offline-wrapper {
+                > svg {
+                    height: 95%;
+                }
+            }
+            .off-main {
+                .off-content {
+                    h1{
+                        font-size: 45px;
+                    }
+                    bottom: 0%;
+                }
+            }
+            .moon {
+                top: 12%;
+                width: 50px;
+                height: 50px;
+            }
+        }
+    }
+    .auth-bg {
+        .r {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+
+
+            &:first-child {
+                top: -100px;
+                right: -100px;
+                background: $theme-color;
+            }
+
+            &:last-child {
+                left: -100px;
+                bottom: -100px;
+                background: $theme-color2;
+
+            }
+
+            &.s {
+                width: 20px;
+                height: 20px;
+
+                &:nth-child(2) {
+                    top: 150px;
+                    right: -150px;
+                    background: $primary-color;
+                }
+
+                &:nth-child(3) {
+                    left: -150px;
+                    bottom: 150px;
+                    background: $success-color;
+                }
+            }
+
+            &:nth-child(odd) {
+                animation: floating 7s infinite;
+            }
+
+            &:nth-child(even) {
+                animation: floating 9s infinite;
+            }
+        }
+    }
+}
+
+/* image varient start */
+.aut-bg-img {
+    background-image: url('../images/bg-images/bg4.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.aut-bg-img-side {
+    p {
+        line-height: 2;
+    }
+}
+
+.aut-bg-img,
+.aut-bg-img-side {
+
+    .custom-select,
+    .form-control {
+        background: transparent;
+    }
+}
+
+.auth-tabs {
+    .card {
+        // border-right: 10px;
+    }
+
+    .nav-pills {
+        // margin-top: -80px;
+    }
+
+    .tab-content {
+        overflow: hidden;
+        position: relative;
+
+        .tab-pane>* {
+            position: relative;
+            z-index: 5;
+        }
+
+        .auth-icon {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            font-size: 180px;
+            transform: rotate(-30deg);
+            z-index: 1;
+            opacity: 0.2;
+        }
+    }
+}
+
+/* image varient start */
+@keyframes floating {
+    from {
+        transform: rotate(0deg) translate(-10px) rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg) translate(-10px) rotate(-360deg);
+    }
+}
+@keyframes bubble {
+    0%,30% {
+        opacity: 0;
+    }
+
+    31% {
+        opacity: 1;
+    }
+
+    59% {
+        opacity: 1;
+    }
+    60%,100% {
+        opacity: 0;
+    }
+}
+@keyframes sark {
+    0% {
+        transform: rotate(-10deg) translate(245px, 46px);
+    }
+
+    30% {
+        transform: rotate(-13deg) translate(-329px, -80px);
+    }
+
+    60% {
+        transform: rotate(-13deg) translate(-329px, -80px);
+    }
+    100% {
+        transform: rotate(-26deg) translate(-887px, -80px);
+    }
+}
+@keyframes boatanim {
+    0% {
+        transform: rotate(-10deg) translate(95px, -14px);
+    }
+
+    50% {
+        transform: rotate(5deg) translate(-65px, -14px);
+    }
+
+    100% {
+        transform: rotate(-10deg) translate(95px, -14px);
+    }
+}
+@keyframes sunwawe {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+@keyframes sparcle {
+    0% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+/**====== Authentication css end ======**/

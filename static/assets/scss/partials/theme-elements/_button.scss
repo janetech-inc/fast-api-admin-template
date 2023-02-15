@@ -1,0 +1,211 @@
+@import "../mixins/buttons";
+/**  =====================
+      Button css start
+==========================  **/
+.btn-theme,
+a.btn-theme {
+    background: $theme-color;
+    color: #fff;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
+    border-color: #1de1c2;
+    border-radius: 0.25rem;
+    padding: 11px 25px;
+
+    &:active,
+    &:focus,
+    &:not(:disabled):not(.disabled):active {
+        background-image: $theme-color;
+        color: #fff;
+        box-shadow: none;
+    }
+
+    &.active {
+        background-image: #fff !important;
+        color: $default-color;
+        border: 1px solid $theme-border;
+        box-shadow: none;
+    }
+}
+
+.btn-outline-theme {
+    background-image: #fff !important;
+    color: $default-color;
+    border: 1px solid $theme-border;
+    box-shadow: none;
+
+    &:active,
+    &:focus,
+    &:not(:disabled):not(.disabled):active {
+        background-image: #fff;
+        color: $default-color;
+        border: 1px solid $theme-border;
+    }
+
+    &.active {
+        background: $theme-color !important;
+        color: #fff;
+        box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
+        border: 1px solid transparent;
+    }
+}
+
+.btn-theme2 {
+    background: $theme-color2;
+    color: #fff;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 14px 25px;
+
+    &:active,
+    &:focus,
+    &:not(:disabled):not(.disabled):active {
+        background-image: $theme-color2;
+        color: #fff;
+        box-shadow: none;
+    }
+
+    &.active {
+        background-image: #fff !important;
+        color: $default-color;
+        border: 1px solid $theme-border;
+        box-shadow: none;
+    }
+}
+
+.btn-outline-theme2 {
+    background-image: #fff !important;
+    color: $default-color;
+    border: 1px solid $theme-border;
+    box-shadow: none;
+
+    &:active,
+    &:focus,
+    &:not(:disabled):not(.disabled):active {
+        background-image: #fff;
+        color: $default-color;
+        border: 1px solid $theme-border;
+    }
+
+    &.active {
+        background: $theme-color2 !important;
+        color: #fff;
+        box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
+        border: 1px solid transparent;
+    }
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 0.25rem;
+    font-size: 14px;
+    margin-bottom: 5px;
+    margin-right: 10px;
+    transition: all 0.3s ease-in-out;
+
+    > i {
+        margin-right: 12px;
+    }
+
+    &.btn-icon,
+    &.drp-icon {
+        width: 45px;
+        height: 45px;
+        padding: 10px 12px;
+
+        > i {
+            margin-right: 0;
+        }
+    }
+
+    &.drp-icon {
+        &.dropdown-toggle:after {
+            display: none;
+        }
+
+        +.dropdown-menu {
+            margin-left: -10px;
+        }
+    }
+
+    &:active,
+    &:focus {
+        box-shadow: none;
+    }
+
+    &-square {
+        border-radius: 0;
+    }
+
+    &.disabled {
+        cursor: not-allowed;
+        opacity: 0.55;
+    }
+
+    &-rounded {
+        border-radius: 30px;
+    }
+}
+
+.btn-group {
+    .btn {
+        margin-bottom: 0;
+        margin-right: 0;
+    }
+}
+
+.btn-group-sm > .btn,
+.btn-sm {
+    padding: 6px 14px;
+    font-size: 13px;
+}
+
+.btn-group-lg > .btn,
+.btn-lg {
+    padding: 13px 23px;
+    font-size: 16px;
+}
+
+.shadow-1 {
+    box-shadow: 0 7px 12px 0 rgba(62,57,107,.16);
+}
+
+.shadow-2 {
+    box-shadow: 0 10px 18px 0 rgba(62,57,107,.2);
+}
+
+.shadow-3 {
+    box-shadow: 0 14px 24px 0 rgba(62,57,107,.26);
+}
+
+.shadow-4 {
+    box-shadow: 0 16px 28px 0 rgba(62,57,107,.3);
+}
+
+.shadow-5 {
+    box-shadow: 0 20px 24px 0 rgba(62,57,107,.36);
+}
+/* Alternate buttons */
+@each $color, $value in $theme-colors {
+    .btn-#{$color} {
+        @include button-variant($value, $value);
+    }
+}
+/* outline buttons */
+@each $color, $value in $theme-colors {
+    .btn-outline-#{$color} {
+        @include button-outline-variant($value);
+    }
+}
+/* glow buttons */
+@each $color, $value in $theme-colors {
+    .btn-glow-#{$color} {
+        @include button-glow-variant($value);
+    }
+}
+
+.btn-group.btn-group-vertical>.btn-group:not(:first-child),
+.btn-group.btn-group-vertical>.btn:not(:first-child){
+    margin-left: 0;
+}
+/**====== Button css end ======**/

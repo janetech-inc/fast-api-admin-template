@@ -1,0 +1,14 @@
+
+name: Feature branch workflow
+
+on:
+  push:
+    branches-ignore: [ "main", "production" ]
+
+jobs:
+  lint:
+    uses: ./.github/workflows/_lint.yml
+
+  test:
+    uses: ./.github/workflows/_test.yml
+
