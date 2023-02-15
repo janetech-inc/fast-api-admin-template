@@ -141,9 +141,7 @@ Create a new service by selecting the button above :point_down:
 
 ### Adding a new model
 
-For admin enabled views, inherit from ```BaseAdmin```
-
-> Follow the example [resource.rs](apps/api/models/resource.rs) add your models:
+> For admin enabled views, inherit from ```BaseAdmin```. Follow the example [resource.rs](apps/api/models/resource.rs) add your models:
 
       apps/api/models/users.rs
       apps/api/models/shares.rs
