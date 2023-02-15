@@ -27,7 +27,7 @@ jobs:
       uses: aws-actions/configure-aws-credentials@v1
       with:
         role-duration-seconds: 1200
-        role-to-assume: arn:aws:iam::632720948474:role/github-actions-role
+        role-to-assume: arn:aws:iam::xxxx:role/github-actions-role
         aws-region: us-east-1
     - name: severless deploy
       run: serverless deploy --stage ${{ inputs.env }}
