@@ -193,7 +193,7 @@ To add tests, simply add to the appropriate package and using [automod]() it wil
     
 <br/>
 
-## Continous Integration
+## Continuous Integration
 
 Github workflows are will trigger of off specific branches
 
