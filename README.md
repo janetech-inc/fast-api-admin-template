@@ -67,7 +67,7 @@ Check out the [live site]().
 
 ## Requirements
 
-- [`fast-api`](https://www.rust-lang.org/tools/install)
+- [`FastAPI`](https://fastapi.tiangolo.com/features/)
 - ['Node'](https://nodejs.org/en/download/)
 - [AWS CLI](https://aws.amazon.com/cli/)
 
