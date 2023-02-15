@@ -19,8 +19,6 @@ Check out the [live site]().
 <img src="static/assets/images/example-admin.png" width="650"> 
 
 
-
-
 ## Components 
 
   - **Python** 
@@ -102,7 +100,7 @@ Check out the [live site]().
 
 Create a new service by selecting the button above :point_down:
 
-<img src="assets/images/use-template.png" width="150"> 
+<img src="static/assets/images/use-template.png" width="150"> 
 
 > To setup your local environment:
 
