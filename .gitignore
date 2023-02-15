@@ -131,3 +131,7 @@ dmypy.json
 
 # Node
 node_modules
+
+
+# Visual Studio
+.DS_Store
