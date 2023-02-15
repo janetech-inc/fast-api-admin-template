@@ -7,7 +7,16 @@ This template also includes auto admin capabilities for models.
 
 Check out the [live site]().
 
-<img src="static/assets/images/example-view.png" width="500"> <span style="padding-left:30px"></span> <img src="static/assets/images/example-admin.png" width="500"> 
+### API
+<img src="static/assets/images/FastAPI-Swagger-UI.png" width="650"> 
+
+### App Views
+
+<img src="static/assets/images/example-view.png" width="650"> 
+
+### Admin Views
+
+<img src="static/assets/images/example-admin.png" width="650"> 
 
 
 
