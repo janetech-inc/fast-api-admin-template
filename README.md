@@ -68,8 +68,8 @@ Check out the [live site]().
 ## Requirements
 
 - [`FastAPI`](https://fastapi.tiangolo.com/features/)
-- ['Node'](https://nodejs.org/en/download/)
-- [AWS CLI](https://aws.amazon.com/cli/)
+- [`Node`](https://nodejs.org/en/download/)
+- [`AWS CLI`](https://aws.amazon.com/cli/)
 
 ## Project Directory Structure
 
@@ -119,18 +119,16 @@ Create a new service by selecting the button above :point_down:
 
       python apps/main.py 
 
-> Or use docker-compise 
+> Or use docker 
 
       docker-compose up 
       docker-compose up --build
 
-> Before you are ready to merge your feature, to test running lamnbda, you can run 
+> Before you are ready to merge your feature, to test running lamnbda, you can run: 
 
       serverless offline 
 
-> pre-commit 
-
-## Adding a new route
+### Adding a new route
 
 > For CRUD applications, follow the example in [resource.rs](apps/api.routes/resource.rs) and add your resource route to: 
       
@@ -141,7 +139,7 @@ Create a new service by selecting the button above :point_down:
       apps/api/routes/users.rs
       apps/api/routes/shares.rs
 
-## Adding a new model
+### Adding a new model
 
 For admin enabled views, inherit from ```BaseAdmin```
 
@@ -152,18 +150,18 @@ For admin enabled views, inherit from ```BaseAdmin```
 
 
 
-## Connecting to a source DB
+### Connecting to a source DB
 
 TODO: Add DB support
 
 
-## Adding views
+### Adding views
 
 Follow the example [resource/dashboard.html](templates/resource/dashboard.html) for a custom model view:
 
+<br/>
 
-
-## Test Driven Development (TDD)
+## Test Driven Development
 
 Before writing any functionality, we recommend you write your tests first. See the examples in:
 
@@ -182,6 +180,19 @@ To add tests, simply add to the appropriate package and using [automod]() it wil
 
 ** When using actix-web modules, it is not recommended (or easy) to unit test a route module. Follow the example in [tests/integration/routes/resource.rs](tests/integration/routes/resource_test.rs) to add an route integration test.
 
+<br/>
+
+## Deploying
+ 
+ ```aws configure``` has been run.
+
+> To deploy locally:
+
+    npm install
+    serverless deploy
+    
+<br/>
+
 ## Continous Integration
 
 Github workflows are will trigger of off specific branches
@@ -190,11 +201,18 @@ Github workflows are will trigger of off specific branches
 - [development.yml](.github/workflows/development.yml): Lint, test and deployment worflows will run any time there is a push to **main** branch.
 - [production.yml](.github/workflows/production.yml): Lint, test, deployment and release worflows will run any time there is a push to **main** branch.
 
-## Permissions
 
-Github deployment actions are setup to use [assume a role](https://github.com/marketplace/actions/aws-assume-role-github-actions).
+This project uses Github workflows.
 
-See the [assumed rule](.github/workflows/_deploy.yml) in AWS Console for permissions.
+You will need to configure a role in AWS for the github service to use. Follow the instructions [here](https://github.com/marketplace/actions/aws-assume-role-github-actions).
+
+
+### Permissions
+
+You may need to add more permissions to your role. Be as restrictive as possible when adding more permissions
+
+
+<br/>
 
 
 ## Contributing to this template
