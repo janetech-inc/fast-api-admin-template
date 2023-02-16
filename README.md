@@ -104,18 +104,14 @@ Create a new service by selecting the button above :point_down:
 
 > To setup your local environment:
 
-      npm install
-      cargo build
+    python -m venv venv
+    . ./venv/bin/activate
+    pip install -r requirements.txt
 
 
 ## Development
 
 > While working on a feature to start the service locally run: 
-
-      python3 -m venv venv
-      . ./venv/bin/activate
-
-      pip install -r requirements.txt
 
       python apps/main.py 
 
