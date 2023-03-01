@@ -6,10 +6,10 @@ plugins:
 
 custom:
   # customDomain:
-  #   domainName: pubmed-extractor-${self:provider.stage}.system.com
+  #   domainName: fast-api-admin-${self:provider.stage}.janetech.io
   #   stage: "${self:provider.stage}"
   #   basePath: ""
-  #   certificateName: "*.system.com"
+  #   certificateName: "*.janetech.io"
   #   createRoute53Record: true
   warmup:
     default:
